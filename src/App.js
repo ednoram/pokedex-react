@@ -1,56 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+
+import "./styles/app.scss";
+import { PokemonsList, Pagination } from "./components";
+import { setPokemons } from "./actions/pokemonsActions";
 
 function App() {
+  const pokemons = useSelector((state) => state.pokemons);
+  const pagination = useSelector((state) => state.pagination);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=898")
+      .then((response) => dispatch(setPokemons(response.data.results)));
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="app">
+      <div className="container">
+        <h1 className="title">Pokedex</h1>
+        <PokemonsList
+          pokemons={pokemons.slice(
+            pagination.start,
+            pagination.start + pagination.step
+          )}
+        />
+        <Pagination />
+      </div>
     </div>
   );
 }

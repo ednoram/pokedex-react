@@ -1,0 +1,13 @@
+@import "./app.scss";
+@import "./base.scss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+}
+
+.container {
+  max-width: 1110px;
+  width: 100%;
+  margin: auto;
+}
