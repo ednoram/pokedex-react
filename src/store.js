@@ -1,8 +1,9 @@
 import { combineReducers, createStore } from "@reduxjs/toolkit";
 
-import { pokemonsReducer, paginationReducer } from "./reducers";
+import { searchReducer, pokemonsReducer, paginationReducer } from "./reducers";
 
 const reducers = combineReducers({
+  search: searchReducer,
   pokemons: pokemonsReducer,
   pagination: paginationReducer,
 });

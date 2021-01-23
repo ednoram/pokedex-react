@@ -8,7 +8,6 @@ const paginationReducer = produce((draft, action) => {
       if (draft.start < action.items_count - draft.step) {
         draft.start += draft.step;
       }
-      console.log(draft.step, draft.start);
       break;
     case "PREV_PAGE":
       if (draft.start >= draft.step) {
@@ -17,6 +16,12 @@ const paginationReducer = produce((draft, action) => {
       break;
     case "SET_PAGE":
       draft.start = (action.page - 1) * draft.step;
+      break;
+    case "SET_STEP":
+      draft.step = action.step;
+      while (draft.start % draft.step !== 0) {
+        draft.start -= 10;
+      }
       break;
     default:
       return;

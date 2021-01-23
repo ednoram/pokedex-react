@@ -1,0 +1,27 @@
+.items_per_page {
+  .list_item {
+    button {
+      width: 30px;
+      height: 30px;
+      background: none;
+    }
+    border: 1px solid #222;
+  }
+
+  .list_item:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .list_item:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .active_item {
+    background: #222;
+    button {
+      color: white;
+    }
+  }
+}

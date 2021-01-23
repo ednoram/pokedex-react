@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import "./styles/app.scss";
-import { PokemonsList, Pagination } from "./components";
+import {
+  Searchbox,
+  Pagination,
+  PokemonsList,
+  ItemsPerPage,
+} from "./components";
 import { setPokemons } from "./actions/pokemonsActions";
 
 function App() {
-  const pokemons = useSelector((state) => state.pokemons);
-  const pagination = useSelector((state) => state.pagination);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,12 +24,11 @@ function App() {
     <div className="app">
       <div className="container">
         <h1 className="title">Pokedex</h1>
-        <PokemonsList
-          pokemons={pokemons.slice(
-            pagination.start,
-            pagination.start + pagination.step
-          )}
-        />
+        <div className="flexSpaceBetween">
+          <Searchbox />
+          <ItemsPerPage />
+        </div>
+        <PokemonsList />
         <Pagination />
       </div>
     </div>

@@ -11,3 +11,8 @@ export const setPage = (page) => ({
   type: "SET_PAGE",
   page: page,
 });
+
+export const setStep = (step) => ({
+  type: "SET_STEP",
+  step: step,
+});
