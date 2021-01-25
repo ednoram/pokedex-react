@@ -1,0 +1,25 @@
+.pokemon_page_container {
+  padding: 80px 0;
+
+  .pokemon_name {
+    font-size: 50px;
+  }
+
+  .pokemon_name:first-letter {
+    text-transform: uppercase;
+  }
+
+  .pokemon_id {
+    color: gray;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  .pokemon_info {
+    margin-top: 20px;
+  }
+
+  .pokemon_avatar {
+    width: 400px;
+  }
+}

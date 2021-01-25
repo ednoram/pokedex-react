@@ -24,7 +24,7 @@ const Searchbox = () => {
 
   const handleInputChange = debounce(
     (e) => dispatch(changeSearchValue(e.target.value)),
-    800
+    500
   );
 
   return (

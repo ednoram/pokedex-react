@@ -1,38 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./styles/app.scss";
-import {
-  Searchbox,
-  Pagination,
-  PokemonsList,
-  ItemsPerPage,
-} from "./components";
-import { setPokemons } from "./actions/pokemonsActions";
+import { fetchPokemonsData } from "./actions/pokemonsActions";
+import { HomeContainer, PokemonPageContainer } from "./containers";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=898")
-      .then((response) => dispatch(setPokemons(response.data.results)));
+    dispatch(fetchPokemonsData());
   }, [dispatch]);
 
   return (
-    <div className="app">
-      <div className="container">
-        <h1 className="title">Pokedex</h1>
-        <div className="flexSpaceBetween">
-          <Searchbox />
-          <ItemsPerPage />
-        </div>
-        <PokemonsList />
-        <Pagination />
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomeContainer} />
+        <Route exact path="/:id" component={PokemonPageContainer} />
+        <Route>404 not found</Route>
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

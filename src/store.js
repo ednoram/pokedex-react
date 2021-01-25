@@ -1,4 +1,9 @@
-import { combineReducers, createStore } from "@reduxjs/toolkit";
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+} from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 
 import { searchReducer, pokemonsReducer, paginationReducer } from "./reducers";
 
@@ -8,6 +13,8 @@ const reducers = combineReducers({
   pagination: paginationReducer,
 });
 
-const store = createStore(reducers);
+const middleware = applyMiddleware(thunk);
+
+const store = createStore(reducers, middleware);
 
 export default store;

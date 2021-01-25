@@ -16,7 +16,9 @@ const PokemonsList = () => {
   );
 
   const filteredPokemons = searchValue
-    ? pokemons.filter((pokemon) => pokemon.name.startsWith(searchValue))
+    ? pokemons.filter((pokemon) =>
+        pokemon.name.startsWith(searchValue.toLowerCase())
+      )
     : pokemons.slice(pagination.start, pagination.start + pagination.step);
 
   return (
