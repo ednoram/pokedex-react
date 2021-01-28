@@ -20,7 +20,7 @@ const HomePageContainer = () => {
       <div className="home">
         <div className="container">
           <h1 className="title">Pokédex</h1>
-          <div className="flexSpaceBetween">
+          <div className="flex_space_between">
             <Searchbox />
             <ItemsPerPage />
           </div>

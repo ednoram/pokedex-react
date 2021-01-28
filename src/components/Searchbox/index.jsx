@@ -1,12 +1,15 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./searchbox.scss";
 
 import { changeSearchValue } from "../../actions/searchActions";
 
 const Searchbox = () => {
+  const searchValue = useSelector((state) => state.search.value);
   const dispatch = useDispatch();
+
+  const searchInputRef = useRef();
 
   const debounce = (func, wait) => {
     let timeout;
@@ -27,9 +30,14 @@ const Searchbox = () => {
     500
   );
 
+  useEffect(() => {
+    searchInputRef.current.value = searchValue;
+  }, [searchValue]);
+
   return (
-    <form className="searchbox">
+    <form className="searchbox" onSubmit={(e) => e.preventDefault()}>
       <input
+        ref={searchInputRef}
         type="text"
         className="search_input"
         onChange={handleInputChange}

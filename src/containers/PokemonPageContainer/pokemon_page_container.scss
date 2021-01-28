@@ -15,11 +15,13 @@
     font-size: 18px;
   }
 
-  .pokemon_info {
+  .content {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .pokemon_avatar {
+  .pokemon_img {
     width: 400px;
   }
 }

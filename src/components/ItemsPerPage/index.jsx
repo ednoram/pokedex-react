@@ -15,7 +15,7 @@ const ItemsPerPage = () => {
   return (
     !searchValue && (
       <div className="items_per_page">
-        <ul className="flexSpaceBetween">
+        <ul className="flex_space_between">
           <li className={step === 10 ? "list_item active_item" : "list_item"}>
             <button onClick={() => dispatch(setStep(10))}>10</button>
           </li>

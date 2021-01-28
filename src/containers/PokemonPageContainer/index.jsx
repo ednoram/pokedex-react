@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import "./pokemon_page_container.scss";
+import PokemonStats from "../../components/PokemonStats";
+import PokemonInfo from "../../components/PokemonInfo";
 
 import { PageNotFoundContainer } from "..";
 
@@ -19,6 +21,11 @@ const PokemonPageContainer = () => {
     (pokemon) => pokemon.name === pathname.slice(1)
   );
 
+  const pageTitle =
+    pokemon?.name.charAt(0).toUpperCase() +
+    pokemon?.name.slice(1) +
+    " | Pokédex";
+
   useEffect(() => {
     if (!pokemon) return;
 
@@ -30,12 +37,7 @@ const PokemonPageContainer = () => {
     return () => setPokemonData(null);
   }, [pokemon]);
 
-  const pageTitle =
-    pokemon?.name.charAt(0).toUpperCase() +
-    pokemon?.name.slice(1) +
-    " | Pokédex";
-
-  return pokemon ? (
+  return pokemon && pokemonData ? (
     <>
       <Helmet>
         <meta name="description" content={`${pageTitle}`} />
@@ -47,14 +49,18 @@ const PokemonPageContainer = () => {
             <h2 className="pokemon_name">{pokemon.name}</h2>
             <p className="pokemon_id">#{pokemonId}</p>
           </div>
-          <div className="pokemon_info">
-            {pokemonId && (
-              <img
-                alt="pokemon avatar"
-                className="pokemon_avatar"
-                src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png`}
-              />
-            )}
+          <div className="content">
+            <div>
+              {pokemonId && (
+                <img
+                  alt="pokemon avatar"
+                  className="pokemon_img"
+                  src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png`}
+                />
+              )}
+            </div>
+            <PokemonInfo pokemonData={pokemonData} />
+            <PokemonStats pokemonData={pokemonData} />
           </div>
         </div>
       </div>

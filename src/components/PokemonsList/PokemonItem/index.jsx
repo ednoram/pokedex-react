@@ -15,6 +15,7 @@ const PokemonItem = ({ pokemon }) => {
       setPokemonData(response.data);
       setPokemonId(`00${response.data.id}`.slice(-3));
     });
+
     return () => setPokemonData(null);
   }, [pokemon]);
 
