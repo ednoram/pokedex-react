@@ -21,15 +21,13 @@ const PokemonsList = () => {
       )
     : pokemons.slice(pagination.start, pagination.start + pagination.step);
 
-  return (
+  return filteredPokemons.length < 1 ? (
+    <p className="nothing_was_found">Nothing was found.</p>
+  ) : (
     <div className="pokemons_list">
-      {filteredPokemons.length < 1 ? (
-        <p>Nothing was found.</p>
-      ) : (
-        filteredPokemons.map((pokemon) => (
-          <PokemonItem pokemon={pokemon} key={nanoid()} />
-        ))
-      )}
+      {filteredPokemons.map((pokemon) => (
+        <PokemonItem pokemon={pokemon} key={nanoid()} />
+      ))}
     </div>
   );
 };

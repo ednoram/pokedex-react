@@ -9,7 +9,6 @@ export const fetchPokemonsData = () => (dispatch) => {
   axios
     .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=898")
     .then((response) => {
-      const pokemonsData = response.data.results;
-      dispatch(setPokemons(pokemonsData));
+      dispatch(setPokemons(response.data.results));
     });
 };

@@ -9,6 +9,10 @@ body {
   max-width: 1110px;
   width: 100%;
   margin: auto;
+
+  @media (max-width: 1160px) {
+    padding: 0 25px;
+  }
 }
 
 .flex_space_between {
