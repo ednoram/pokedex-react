@@ -1,12 +1,18 @@
 $border: 1px solid #222;
 
-.pokemon_stats {
+.pokemon_table {
+  margin: auto;
+
   @media (max-width: 820px) {
     display: flex;
     justify-content: center;
   }
 
-  .pokemon_stats_content {
+  @media (max-width: 400px) {
+    width: 100%;
+  }
+
+  .pokemon_table_content {
     @media (max-width: 400px) {
       width: 100%;
     }
@@ -17,7 +23,7 @@ $border: 1px solid #222;
     margin-left: 5px;
   }
 
-  .pokemon_stats_grid {
+  .pokemon_table_grid {
     display: grid;
     grid-template-columns: 135px auto;
     width: 350px;
@@ -36,30 +42,6 @@ $border: 1px solid #222;
 
     @media (max-width: 340px) {
       grid-template-columns: 80px auto;
-    }
-
-    .grid_item {
-      padding: 8px 10px;
-      border-right: $border;
-      border-bottom: $border;
-      box-sizing: border-box;
-    }
-
-    .grid_item:last-child {
-      border-bottom-right-radius: 16px;
-    }
-
-    .stat_blocks {
-      display: grid;
-      grid-template-columns: repeat(15, 1fr);
-      gap: 2px;
-      margin: auto;
-
-      div {
-        width: 10px;
-        background-color: #222;
-        height: 14px;
-      }
     }
   }
 }

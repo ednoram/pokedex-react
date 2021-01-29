@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import "./pokemon_page_container.scss";
-import PokemonStats from "../../components/PokemonStats";
-import PokemonInfo from "../../components/PokemonInfo";
+import { PokemonTable } from "../../components";
 
 import { PageNotFoundContainer } from "..";
 
@@ -60,8 +59,8 @@ const PokemonPageContainer = () => {
               )}
             </div>
             <div className="pokemon_info_tables">
-              <PokemonInfo pokemonData={pokemonData} />
-              <PokemonStats pokemonData={pokemonData} />
+              <PokemonTable pokemonData={pokemonData} type="info" />
+              <PokemonTable pokemonData={pokemonData} type="stats" />
             </div>
           </div>
         </div>

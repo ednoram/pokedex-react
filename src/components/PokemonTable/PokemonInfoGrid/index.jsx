@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import "./pokemon_info.scss";
 
-const PokemonInfo = ({ pokemonData }) => {
+const PokemonInfoGrid = ({ pokemonData }) => {
   const cmToFeetInches = (n) => {
     const realFeet = (n * 0.3937) / 12;
     const feet = Math.floor(realFeet);
@@ -38,30 +38,25 @@ const PokemonInfo = ({ pokemonData }) => {
     ));
 
   return (
-    <div className="pokemon_info">
-      <div className="pokemon_info_content">
-        <h3>Basic Info</h3>
-        <div className="pokemon_info_grid">
-          <div>Type:</div>
-          <div className="top_right">{pokemonTypes}</div>
-          <div>Height:</div>
-          <div>{pokemonHeight}</div>
-          <div>Weight:</div>
-          <div>{pokemonWeight}</div>
-          <div className="bottom_left">Abilities:</div>
-          <div>{pokemonAbilities}</div>
-        </div>
-      </div>
+    <div className="pokemon_table_grid pokemon_info_grid">
+      <div>Type:</div>
+      <div className="top_right">{pokemonTypes}</div>
+      <div>Height:</div>
+      <div>{pokemonHeight}</div>
+      <div>Weight:</div>
+      <div>{pokemonWeight}</div>
+      <div className="bottom_left">Abilities:</div>
+      <div>{pokemonAbilities}</div>
     </div>
   );
 };
 
-PokemonInfo.propTypes = {
+PokemonInfoGrid.propTypes = {
   pokemonData: PropTypes.object,
 };
 
-PokemonInfo.defaultProps = {
+PokemonInfoGrid.defaultProps = {
   pokemonData: {},
 };
 
-export default PokemonInfo;
+export default PokemonInfoGrid;
