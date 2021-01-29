@@ -50,7 +50,7 @@ const PokemonPageContainer = () => {
             <p className="pokemon_id">#{pokemonId}</p>
           </div>
           <div className="content">
-            <div>
+            <div className="pokemon_img_container">
               {pokemonId && (
                 <img
                   alt="pokemon avatar"
@@ -59,8 +59,10 @@ const PokemonPageContainer = () => {
                 />
               )}
             </div>
-            <PokemonInfo pokemonData={pokemonData} />
-            <PokemonStats pokemonData={pokemonData} />
+            <div className="pokemon_info_tables">
+              <PokemonInfo pokemonData={pokemonData} />
+              <PokemonStats pokemonData={pokemonData} />
+            </div>
           </div>
         </div>
       </div>

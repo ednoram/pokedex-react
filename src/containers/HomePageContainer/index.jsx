@@ -18,7 +18,7 @@ const HomePageContainer = () => {
         <meta name="description" content={"Home Page | Pokédex"} />
         <title>Pokédex</title>
       </Helmet>
-      <div className="home">
+      <div className="home_container">
         <div className="container">
           <h1 className="title">Pokédex</h1>
           <div className="flex_space_between">

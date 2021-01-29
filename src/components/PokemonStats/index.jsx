@@ -17,13 +17,10 @@ const PokemonStats = ({ pokemonData }) => {
 
   return pokemonData.stats ? (
     <div className="pokemon_stats">
-      <h3>Stats</h3>
-      <div className="pokemon_stats_grid">
-        {pokemonData.stats.map((stat, index) => {
-          const percentage =
-            (stat.base_stat / maxStatValues[stat.stat.name]) * 100;
-
-          return [
+      <div className="pokemon_stats_content">
+        <h3>Stats</h3>
+        <div className="pokemon_stats_grid">
+          {pokemonData.stats.map((stat, index) => [
             <div
               key={nanoid()}
               className={
@@ -42,10 +39,14 @@ const PokemonStats = ({ pokemonData }) => {
                 (index === 0 ? "border_top_right_radius-16" : "")
               }
             >
-              <StatBlocks percentage={percentage} />
+              <StatBlocks
+                percentage={
+                  (stat.base_stat / maxStatValues[stat.stat.name]) * 100
+                }
+              />
             </div>,
-          ];
-        })}
+          ])}
+        </div>
       </div>
     </div>
   ) : null;

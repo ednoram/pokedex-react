@@ -39,16 +39,18 @@ const PokemonInfo = ({ pokemonData }) => {
 
   return (
     <div className="pokemon_info">
-      <h3>Basic Info</h3>
-      <div className="pokemon_info_grid">
-        <div>Type:</div>
-        <div className="top_right">{pokemonTypes}</div>
-        <div>Height:</div>
-        <div>{pokemonHeight}</div>
-        <div>Weight:</div>
-        <div>{pokemonWeight}</div>
-        <div className="bottom_left">Abilities:</div>
-        <div>{pokemonAbilities}</div>
+      <div className="pokemon_info_content">
+        <h3>Basic Info</h3>
+        <div className="pokemon_info_grid">
+          <div>Type:</div>
+          <div className="top_right">{pokemonTypes}</div>
+          <div>Height:</div>
+          <div>{pokemonHeight}</div>
+          <div>Weight:</div>
+          <div>{pokemonWeight}</div>
+          <div className="bottom_left">Abilities:</div>
+          <div>{pokemonAbilities}</div>
+        </div>
       </div>
     </div>
   );
