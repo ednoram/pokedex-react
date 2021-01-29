@@ -4,6 +4,7 @@ import {
   applyMiddleware,
 } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import { searchReducer, pokemonsReducer, paginationReducer } from "./reducers";
 
@@ -13,8 +14,9 @@ const reducers = combineReducers({
   pagination: paginationReducer,
 });
 
-const middleware = applyMiddleware(thunk);
-
-const store = createStore(reducers, middleware);
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export default store;

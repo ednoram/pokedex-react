@@ -1,6 +1,10 @@
 .pagination {
   margin-top: 40px;
 
+  @media (max-width: 960px) {
+    display: none;
+  }
+
   .current_page_btn {
     color: white;
     background-color: #222;

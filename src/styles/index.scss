@@ -13,6 +13,10 @@ body {
   @media (max-width: 1160px) {
     padding: 0 25px;
   }
+
+  @media (max-width: 360px) {
+    padding: 0 16px;
+  }
 }
 
 .flex_space_between {

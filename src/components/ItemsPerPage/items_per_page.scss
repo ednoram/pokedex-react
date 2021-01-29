@@ -1,4 +1,8 @@
 .items_per_page {
+  @media (max-width: 960px) {
+    display: none;
+  }
+
   .list_item {
     button {
       width: 30px;

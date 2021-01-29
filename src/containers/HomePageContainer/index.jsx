@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import "./home_container.scss";
 
 import {
+  ShowMore,
   Searchbox,
   Pagination,
   PokemonsList,
@@ -26,6 +27,7 @@ const HomePageContainer = () => {
           </div>
           <PokemonsList />
           <Pagination />
+          <ShowMore />
         </div>
       </div>
     </>

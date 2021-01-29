@@ -1,0 +1,22 @@
+.show_more {
+  display: none;
+  justify-content: center;
+  margin-top: 40px;
+
+  @media (max-width: 960px) {
+    display: flex;
+  }
+
+  .show_more_btn {
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: #222;
+    border-radius: 16px;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}

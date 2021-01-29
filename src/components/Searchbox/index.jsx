@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./searchbox.scss";
 
 import { changeSearchValue } from "../../actions/searchActions";
+import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
 
 const Searchbox = () => {
   const searchValue = useSelector((state) => state.search.value);
@@ -36,9 +37,10 @@ const Searchbox = () => {
 
   return (
     <form className="searchbox" onSubmit={(e) => e.preventDefault()}>
+      <SearchIcon className="search_icon" />
       <input
-        ref={searchInputRef}
         type="text"
+        ref={searchInputRef}
         className="search_input"
         onChange={handleInputChange}
         placeholder="Search By Name"

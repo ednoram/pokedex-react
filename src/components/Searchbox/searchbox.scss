@@ -1,14 +1,27 @@
 .searchbox {
+  display: flex;
+  align-items: center;
   max-width: 320px;
   width: 100%;
+  border: 1px solid #222;
+  border-radius: 16px;
+  height: 34px;
+  padding: 2px 12px;
+
+  @media (max-width: 768px) {
+    max-width: unset;
+  }
+
+  .search_icon {
+    width: 16px;
+    fill: #222;
+  }
 
   .search_input {
-    height: 32px;
     width: 100%;
-    border: 1px solid #222;
-    border-radius: 16px;
-    padding: 2px 16px;
+    border: none;
     font-size: 14px;
+    margin-left: 6px;
   }
 
   .submit_btn {
