@@ -1,12 +1,12 @@
 .pokemon_page_container {
-  padding: 80px 0 100px;
+  padding: 80px 0 120px;
 
   @media (max-width: 820px) {
-    padding: 60px 0 80px;
+    padding: 60px 0 100px;
   }
 
   @media (max-width: 400px) {
-    padding: 40px 0 80px;
+    padding: 40px 0 90px;
   }
 
   .pokemon_name {

@@ -19,6 +19,10 @@ const Pagination = () => {
 
   const currentPage = Math.floor(pagination.start / pagination.step) + 1;
 
+  const buttonNames = pokemons
+    .slice(0, Math.ceil(pokemons.length / pagination.step))
+    .map((pokemon, index) => index + 1);
+
   const nextPageHandler = () => {
     dispatch(nextPage(pokemons.length));
     window.scroll(0, 0);
@@ -38,18 +42,15 @@ const Pagination = () => {
     (!searchValue || pokemons.length <= pagination.step) && (
       <div className="pagination">
         <button onClick={prevPageHandler}>Previous</button>
-        {pokemons.map(
-          (pokemon, index) =>
-            index < Math.ceil(pokemons.length / pagination.step) && (
-              <button
-                key={nanoid()}
-                onClick={() => changePageHandler(index + 1)}
-                className={currentPage === index + 1 ? "current_page_btn" : ""}
-              >
-                {index + 1}
-              </button>
-            )
-        )}
+        {buttonNames.map((name) => (
+          <button
+            key={nanoid()}
+            onClick={() => changePageHandler(name)}
+            className={currentPage === name ? "current_page_btn" : ""}
+          >
+            {name}
+          </button>
+        ))}
         <button onClick={nextPageHandler}>Next</button>
       </div>
     )

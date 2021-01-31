@@ -6,14 +6,25 @@
   border-radius: 20px;
   padding: 16px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
 
   .pokemon_item_info {
     width: 100%;
     margin-top: 10px;
+    text-align: center;
   }
 
   .pokemon_link {
     width: 100%;
+  }
+
+  .pokemon_id {
+    color: gray;
+    font-size: 14px;
+    font-style: italic;
+    position: absolute;
+    left: 15px;
+    top: 15px;
   }
 
   .pokemon_avatar_div {
@@ -24,14 +35,8 @@
     cursor: pointer;
   }
 
-  .pokemon_id {
-    color: gray;
-    font-size: 12px;
-    font-style: italic;
-  }
-
   .pokemon_name {
-    margin: 5px 0 0 0;
+    font-size: 20px;
   }
 
   .pokemon_name::first-letter {
@@ -40,7 +45,8 @@
 
   .pokemon_types {
     display: flex;
-    margin-top: 5px;
+    justify-content: center;
+    margin-top: 8px;
 
     div {
       padding: 1px 5px;

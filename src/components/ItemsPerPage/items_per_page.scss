@@ -4,12 +4,15 @@
   }
 
   .list_item {
+    border: 1px solid #222;
+    box-sizing: border-box;
+    margin-right: -1px;
+
     button {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       background: none;
     }
-    border: 1px solid #222;
   }
 
   .list_item:first-child {

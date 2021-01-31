@@ -21,6 +21,8 @@ const PokemonItem = ({ pokemon }) => {
 
   return (
     <div className="pokemon_item">
+      <p className="pokemon_id">{"#" + `00${pokemonData?.id}`.slice(-3)}</p>
+
       <Link className="pokemon_link" to={`/${pokemon.name.toLowerCase()}`}>
         {pokemonId && (
           <div
@@ -32,7 +34,6 @@ const PokemonItem = ({ pokemon }) => {
         )}
       </Link>
       <div className="pokemon_item_info">
-        <p className="pokemon_id">{"#" + `00${pokemonData?.id}`.slice(-3)}</p>
         <h3 className="pokemon_name">{pokemon.name}</h3>
         <div className="pokemon_types">
           {pokemonData?.types &&

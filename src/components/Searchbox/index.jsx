@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./searchbox.scss";
 
 import { changeSearchValue } from "../../actions/searchActions";
+import { ReactComponent as XIcon } from "../../assets/x_icon.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
 
 const Searchbox = () => {
@@ -45,6 +46,12 @@ const Searchbox = () => {
         onChange={handleInputChange}
         placeholder="Search By Name"
       />
+      {searchValue && (
+        <XIcon
+          className="x_icon"
+          onClick={() => dispatch(changeSearchValue(""))}
+        />
+      )}
     </form>
   );
 };
