@@ -25,10 +25,20 @@ body {
   align-items: center;
 }
 
+.flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .border_top_right_radius-16 {
   border-top-right-radius: 16px;
 }
 
 .border_bottom_left_radius-16 {
   border-bottom-left-radius: 16px;
+}
+
+.flip {
+  transform: rotate(180deg);
 }
