@@ -1,8 +1,26 @@
+@import "../../styles/variables.scss";
+
 .page_not_found_container {
+  color: $primaryColor;
   padding: 120px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   .page_title {
     text-align: center;
-    font-size: 60px;
+    font-size: 65px;
+  }
+
+  .return_to_homepage_btn {
+    margin-top: 40px;
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 16px;
   }
 }

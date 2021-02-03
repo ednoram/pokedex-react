@@ -54,7 +54,7 @@ const Pagination = () => {
           onClick={prevPageHandler}
         >
           <RightArrow className="flip" />
-          Prev
+          Prev.
         </button>
         {buttonNames.map((name) => (
           <button

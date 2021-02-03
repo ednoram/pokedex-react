@@ -1,5 +1,13 @@
 .home_container {
-  padding: 50px 0 80px;
+  padding: 70px 0 100px;
+
+  @media (max-width: 960px) {
+    padding: 60px 0 100px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px 0 90px;
+  }
 
   .title {
     text-align: center;

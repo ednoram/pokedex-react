@@ -11,6 +11,7 @@
     color: white;
     background-color: $primaryColor;
     border-radius: 16px;
+    box-shadow: $boxShadow;
     font-size: 16px;
 
     @media (max-width: 768px) {

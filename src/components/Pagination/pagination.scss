@@ -5,6 +5,10 @@
   justify-content: flex-end;
   margin-top: 40px;
 
+  @media (max-width: 960px) {
+    justify-content: center;
+  }
+
   .pagination_button {
     width: 35px;
     height: 35px;
@@ -37,7 +41,7 @@
 
   .pagination_prev_next {
     @extend .pagination_button;
-    width: 70px;
+    width: 74px;
     padding: 6px 10px;
 
     svg {

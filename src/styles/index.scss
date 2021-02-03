@@ -43,3 +43,13 @@ body {
 .flip {
   transform: rotate(180deg);
 }
+
+@keyframes bounce {
+  5%,
+  90% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}

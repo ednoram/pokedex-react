@@ -7,8 +7,13 @@
   width: 100%;
   border: $border;
   border-radius: 16px;
-  height: 34px;
+  height: 35px;
   padding: 2px 12px;
+
+  @media (max-width: 960px) {
+    max-width: 460px;
+    margin: auto;
+  }
 
   @media (max-width: 768px) {
     max-width: unset;
