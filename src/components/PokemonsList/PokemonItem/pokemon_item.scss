@@ -1,11 +1,13 @@
+@import "../../../styles/variables.scss";
+
 .pokemon_item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #222;
+  border: $border;
   border-radius: 20px;
   padding: 16px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $boxShadow;
   position: relative;
 
   .pokemon_item_info {
@@ -50,7 +52,7 @@
 
     div {
       padding: 1px 5px;
-      border: 1px solid #222;
+      border: $border;
       border-radius: 8px;
       margin-right: 5px;
     }

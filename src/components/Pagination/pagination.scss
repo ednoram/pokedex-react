@@ -1,12 +1,47 @@
+@import "../../styles/variables.scss";
+
 .pagination {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 40px;
 
-  @media (max-width: 960px) {
-    display: none;
+  .pagination_button {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: white;
+    color: $primaryColor;
+    border: $border;
+    box-sizing: border-box;
+    border-right: none;
+    font-size: 16px;
+    padding: 4px;
+    box-shadow: $boxShadow;
+  }
+
+  .pagination_button:first-child {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+
+  .pagination_button:last-child {
+    border-right: $border;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
 
   .current_page_btn {
     color: white;
-    background-color: #222;
+    background-color: $primaryColor;
+  }
+
+  .pagination_prev_next {
+    @extend .pagination_button;
+    width: 70px;
+    padding: 4px 10px;
+
+    svg {
+      width: 13px;
+    }
   }
 }

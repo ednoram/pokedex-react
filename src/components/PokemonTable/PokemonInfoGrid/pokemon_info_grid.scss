@@ -1,4 +1,4 @@
-$border: 1px solid #222;
+@import "../../../styles/variables.scss";
 
 .pokemon_info_grid {
   @media (max-width: 400px) {

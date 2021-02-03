@@ -1,12 +1,14 @@
+@import "../../styles/variables.scss";
+
 .items_per_page {
   @media (max-width: 960px) {
     display: none;
   }
 
   .list_item {
-    border: 1px solid #222;
+    border: $border;
+    border-right: 0;
     box-sizing: border-box;
-    margin-right: -1px;
 
     button {
       width: 32px;
@@ -21,12 +23,13 @@
   }
 
   .list_item:last-child {
+    border-right: $border;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
   }
 
   .active_item {
-    background: #222;
+    background: $primaryColor;
     button {
       color: white;
     }

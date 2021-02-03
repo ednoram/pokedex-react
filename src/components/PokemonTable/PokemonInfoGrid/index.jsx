@@ -2,7 +2,7 @@ import React from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 
-import "./pokemon_info.scss";
+import "./pokemon_info_grid.scss";
 
 const PokemonInfoGrid = ({ pokemonData }) => {
   const cmToFeetInches = (n) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 
-import "./pokemon_stats.scss";
+import "./pokemon_stats_grid.scss";
 import StatBlocks from "./StatBlocks";
 
 const PokemonStatsGrid = ({ pokemonData }) => {

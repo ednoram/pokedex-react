@@ -1,9 +1,11 @@
+@import "../../styles/variables.scss";
+
 .searchbox {
   display: flex;
   align-items: center;
   max-width: 320px;
   width: 100%;
-  border: 1px solid #222;
+  border: $border;
   border-radius: 16px;
   height: 34px;
   padding: 2px 12px;
@@ -26,7 +28,7 @@
 
   .x_icon {
     height: 10px;
-    fill: #222;
+    fill: $primaryColor;
     cursor: pointer;
   }
 }

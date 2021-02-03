@@ -1,4 +1,4 @@
-$border: 1px solid #222;
+@import "../../../styles/variables.scss";
 
 .pokemon_stats_grid {
   @media (max-width: 820px) {
@@ -32,7 +32,7 @@ $border: 1px solid #222;
 
     div {
       width: 10px;
-      background-color: #222;
+      background-color: $primaryColor;
       height: 14px;
     }
   }

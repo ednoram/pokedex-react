@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .pokemon_page_container {
   padding: 60px 0 120px;
 
@@ -21,7 +23,7 @@
       display: flex;
       align-items: center;
       width: 100px;
-      background-color: #222;
+      background-color: $primaryColor;
       color: white;
       padding: 8px 16px;
       border-radius: 16px;
@@ -69,7 +71,10 @@
 
   .title_and_btns {
     text-align: center;
-    margin-top: 16px;
+
+    @media (max-width: 820px) {
+      margin-top: 16px;
+    }
 
     .prev_next_btn {
       @media (max-width: 460px) {
@@ -102,7 +107,7 @@
   .prev_next_btn {
     width: 42px;
     height: 42px;
-    background-color: #222;
+    background-color: $primaryColor;
     border-radius: 50%;
 
     svg {
