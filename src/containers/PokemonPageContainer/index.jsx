@@ -9,13 +9,14 @@ import "./pokemon_page_container.scss";
 
 import { PageNotFoundContainer } from "..";
 
-import { PokemonTable } from "../../components";
+import { PokemonTable, PokemonEvolutions } from "../../components";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
 const PokemonPageContainer = () => {
   const pathname = useLocation().pathname;
-  const [pokemonData, setPokemonData] = useState({});
   const [pokemonId, setPokemonId] = useState();
+  const [pokemonData, setPokemonData] = useState({});
+  const [fetchFinished, setFetchFinished] = useState(false);
 
   const pokemons = useSelector((state) => state.pokemons);
 
@@ -63,14 +64,14 @@ const PokemonPageContainer = () => {
   };
 
   useEffect(() => {
+    setFetchFinished(false);
     if (!pokemon) return;
 
     axios.get(pokemon.url).then((response) => {
       setPokemonData(response.data);
       setPokemonId(`00${response.data.id}`.slice(-3));
+      setFetchFinished(true);
     });
-
-    return () => setPokemonData(null);
   }, [pokemon]);
 
   return pokemon && pokemonData ? (
@@ -99,21 +100,26 @@ const PokemonPageContainer = () => {
             </div>
             <p className="pokemon_id">#{pokemonId}</p>
           </div>
-          <div className="content">
-            <div className="pokemon_img_container">
-              {pokemonId && (
-                <img
-                  alt="pokemon avatar"
-                  className="pokemon_img"
-                  src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png`}
-                />
-              )}
+          {fetchFinished ? (
+            <div className="content">
+              <div className="pokemon_img_container">
+                {pokemonId && (
+                  <img
+                    alt="pokemon avatar"
+                    className="pokemon_img"
+                    src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png`}
+                  />
+                )}
+              </div>
+              <div className="pokemon_info_tables">
+                <PokemonTable pokemonData={pokemonData} type="info" />
+                <PokemonTable pokemonData={pokemonData} type="stats" />
+              </div>
+              <PokemonEvolutions pokemonData={pokemonData} />
             </div>
-            <div className="pokemon_info_tables">
-              <PokemonTable pokemonData={pokemonData} type="info" />
-              <PokemonTable pokemonData={pokemonData} type="stats" />
-            </div>
-          </div>
+          ) : (
+            <p className="loading_p">Loading...</p>
+          )}
         </div>
       </div>
     </>

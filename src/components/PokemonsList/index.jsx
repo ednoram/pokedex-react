@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useSelector, shallowEqual } from "react-redux";
 
 import "./pokemons_list.scss";
-import PokemonItem from "./PokemonItem";
+import { PokemonCard } from "..";
 
 const PokemonsList = () => {
   const { pokemons, pagination, searchValue } = useSelector(
@@ -26,7 +26,7 @@ const PokemonsList = () => {
   ) : (
     <div className="pokemons_list">
       {filteredPokemons.map((pokemon) => (
-        <PokemonItem pokemon={pokemon} key={nanoid()} />
+        <PokemonCard pokemon={pokemon} key={nanoid()} />
       ))}
     </div>
   );

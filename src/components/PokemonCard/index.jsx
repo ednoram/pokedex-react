@@ -4,9 +4,9 @@ import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import "./pokemon_item.scss";
+import "./pokemon_card.scss";
 
-const PokemonItem = ({ pokemon }) => {
+const PokemonCard = ({ pokemon }) => {
   const [pokemonData, setPokemonData] = useState({});
   const [pokemonId, setPokemonId] = useState();
 
@@ -20,20 +20,21 @@ const PokemonItem = ({ pokemon }) => {
   }, [pokemon]);
 
   return (
-    <div className="pokemon_item">
+    <div className="pokemon_card">
       <p className="pokemon_id">{"#" + `00${pokemonData?.id}`.slice(-3)}</p>
 
       <Link className="pokemon_link" to={`/${pokemon.name.toLowerCase()}`}>
         {pokemonId && (
           <div
             className="pokemon_avatar_div"
+            onClick={() => window.scroll(0, 0)}
             style={{
               backgroundImage: `URL(https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemonId}.png)`,
             }}
           />
         )}
       </Link>
-      <div className="pokemon_item_info">
+      <div className="pokemon_card_info">
         <h3 className="pokemon_name">{pokemon.name}</h3>
         <div className="pokemon_types">
           {pokemonData?.types &&
@@ -46,12 +47,12 @@ const PokemonItem = ({ pokemon }) => {
   );
 };
 
-PokemonItem.propTypes = {
+PokemonCard.propTypes = {
   pokemon: PropTypes.object,
 };
 
-PokemonItem.defaultProps = {
+PokemonCard.defaultProps = {
   pokemon: {},
 };
 
-export default PokemonItem;
+export default PokemonCard;

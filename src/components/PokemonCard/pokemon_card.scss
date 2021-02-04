@@ -1,6 +1,6 @@
-@import "../../../styles/variables.scss";
+@import "../../styles/variables.scss";
 
-.pokemon_item {
+.pokemon_card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
   box-shadow: $boxShadow;
   position: relative;
 
-  .pokemon_item_info {
+  .pokemon_card_info {
     width: 100%;
     margin-top: 10px;
     text-align: center;
@@ -59,7 +59,7 @@
   }
 }
 
-.pokemon_item:hover {
+.pokemon_card:hover {
   animation-name: bounce;
   animation-duration: 0.3s;
 }
