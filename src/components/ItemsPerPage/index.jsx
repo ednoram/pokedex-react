@@ -10,8 +10,8 @@ import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 const ItemsPerPage = () => {
   const { paginationStep, searchValue } = useSelector(
     (state) => ({
-      paginationStep: state.pagination.step,
       searchValue: state.search.value,
+      paginationStep: state.pagination.step,
     }),
     shallowEqual
   );
@@ -26,35 +26,33 @@ const ItemsPerPage = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    !searchValue.trim() && (
-      <div className="items_per_page">
-        <p>Showing</p>
+  return !searchValue.trim() ? (
+    <div className="items_per_page">
+      <p>Showing</p>
+      <div
+        ref={containerRef}
+        onClick={switchIsOpen}
+        className="items_per_page_dropdown flex_space_between"
+      >
+        <p>{paginationStep}</p>
+        <RightArrow
+          className="dropdown_arrow"
+          style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
+        />
         <div
-          ref={containerRef}
-          onClick={switchIsOpen}
-          className="items_per_page_dropdown flex_space_between"
+          className="dropdown_div"
+          style={{ display: isOpen ? "block" : "none" }}
         >
-          <p>{paginationStep}</p>
-          <RightArrow
-            className="dropdown_arrow"
-            style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
-          />
-          <div
-            className="dropdown_div"
-            style={{ display: isOpen ? "block" : "none" }}
-          >
-            <ul>
-              <DropdownItem number="10" />
-              <DropdownItem number="20" />
-              <DropdownItem number="50" />
-            </ul>
-          </div>
+          <ul>
+            <DropdownItem number="10" />
+            <DropdownItem number="20" />
+            <DropdownItem number="50" />
+          </ul>
         </div>
-        <p>cards</p>
       </div>
-    )
-  );
+      <p>cards</p>
+    </div>
+  ) : null;
 };
 
 export default ItemsPerPage;

@@ -21,7 +21,7 @@ const ShowMore = () => {
 
   useEffect(() => {
     window.scroll(0, scrollPosition);
-  }, [scrollPosition, paginationStep, pokemons]);
+  }, [scrollPosition]);
 
   const handleClick = () => {
     setScrollPosition(window.scrollY);

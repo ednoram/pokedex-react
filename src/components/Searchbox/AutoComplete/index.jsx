@@ -43,7 +43,13 @@ const AutoComplete = ({ inputRef }) => {
     const keydownHandler = (e) => {
       switch (e.keyCode) {
         case 13:
-          dispatch(setSearchValue(suggestions[activeIndex]));
+          e.preventDefault();
+          const newValue = suggestions[activeIndex];
+          if (newValue) {
+            dispatch(setSearchValue(newValue));
+          } else {
+            dispatch(setShowAutoComplete(false));
+          }
           break;
         case 38:
           e.preventDefault();
@@ -65,7 +71,7 @@ const AutoComplete = ({ inputRef }) => {
     window.addEventListener("keydown", keydownHandler);
 
     return () => window.removeEventListener("keydown", keydownHandler);
-  }, [suggestions, activeIndex, dispatch]);
+  });
 
   return (
     <div className="autocomplete">
