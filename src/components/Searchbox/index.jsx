@@ -3,7 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 import "./searchbox.scss";
 
-import { changeSearchValue } from "../../actions/searchActions";
+import AutoComplete from "./AutoComplete";
+
+import {
+  changeSearchValue,
+  setShowAutoComplete,
+} from "../../actions/searchActions";
+import { useOutsideClick } from "../../hooks";
 import { ReactComponent as XIcon } from "../../assets/x_icon.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
 
@@ -11,19 +17,22 @@ const Searchbox = () => {
   const searchValue = useSelector((state) => state.search.value);
   const dispatch = useDispatch();
 
-  const searchInputRef = useRef();
+  const inputRef = useRef();
+  const containerRef = useRef();
+
+  useOutsideClick(containerRef, () => dispatch(setShowAutoComplete(false)));
 
   const debounce = (func, wait) => {
     let timeout;
 
     return (...args) => {
-      const later = () => {
+      const callback = () => {
         clearTimeout(timeout);
         func(...args);
       };
 
       clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      timeout = setTimeout(callback, wait);
     };
   };
 
@@ -33,26 +42,33 @@ const Searchbox = () => {
   );
 
   useEffect(() => {
-    searchInputRef.current.value = searchValue;
-  }, [searchValue]);
+    inputRef.current.value = searchValue;
+    !searchValue.trim()
+      ? dispatch(setShowAutoComplete(false))
+      : dispatch(setShowAutoComplete(true));
+  }, [searchValue, dispatch]);
 
   return (
-    <form className="searchbox" onSubmit={(e) => e.preventDefault()}>
-      <SearchIcon className="search_icon" />
-      <input
-        type="text"
-        ref={searchInputRef}
-        className="search_input"
-        onChange={handleInputChange}
-        placeholder="Search By Name"
-      />
-      {searchValue && (
-        <XIcon
-          className="x_icon"
-          onClick={() => dispatch(changeSearchValue(""))}
+    <div className="searchbox" ref={containerRef}>
+      <form className="searchbox_form" onSubmit={(e) => e.preventDefault()}>
+        <SearchIcon className="search_icon" />
+        <input
+          type="text"
+          ref={inputRef}
+          className="search_input"
+          onChange={handleInputChange}
+          placeholder="Search By Name"
+          onClick={() => searchValue && dispatch(setShowAutoComplete(true))}
         />
-      )}
-    </form>
+        {searchValue && (
+          <XIcon
+            className="x_icon"
+            onClick={() => dispatch(changeSearchValue(""))}
+          />
+        )}
+      </form>
+      <AutoComplete inputRef={inputRef} />
+    </div>
   );
 };
 

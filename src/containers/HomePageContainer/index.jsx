@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useDispatch } from "react-redux";
 
 import "./home_container.scss";
 
@@ -10,8 +11,15 @@ import {
   PokemonsList,
   ItemsPerPage,
 } from "../../components";
+import { setShowAutoComplete } from "../../actions/searchActions";
 
 const HomePageContainer = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setShowAutoComplete(false));
+  }, [dispatch]);
+
   return (
     <>
       <Helmet>

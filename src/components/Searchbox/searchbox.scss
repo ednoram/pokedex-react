@@ -1,14 +1,9 @@
 @import "../../styles/variables.scss";
 
 .searchbox {
-  display: flex;
-  align-items: center;
-  max-width: 320px;
+  position: relative;
+  max-width: 340px;
   width: 100%;
-  border: $border;
-  border-radius: 16px;
-  height: 35px;
-  padding: 2px 12px;
 
   @media (max-width: 960px) {
     max-width: 460px;
@@ -19,21 +14,30 @@
     max-width: unset;
   }
 
-  .search_icon {
-    width: 16px;
-    fill: #222;
-  }
+  .searchbox_form {
+    display: flex;
+    align-items: center;
+    border: $border;
+    border-radius: 16px;
+    height: 35px;
+    padding: 2px 12px;
 
-  .search_input {
-    width: 100%;
-    border: none;
-    font-size: 14px;
-    margin-left: 6px;
-  }
+    .search_icon {
+      width: 16px;
+      fill: #222;
+    }
 
-  .x_icon {
-    height: 10px;
-    fill: $primaryColor;
-    cursor: pointer;
+    .search_input {
+      width: 100%;
+      border: none;
+      font-size: 14px;
+      margin-left: 6px;
+    }
+
+    .x_icon {
+      height: 10px;
+      fill: $primaryColor;
+      cursor: pointer;
+    }
   }
 }

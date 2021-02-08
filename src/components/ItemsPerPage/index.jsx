@@ -1,31 +1,53 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useRef } from "react";
+import { useSelector, shallowEqual } from "react-redux";
 
 import "./items_per_page.scss";
+import DropdownItem from "./DropdownItem";
 
-import { setStep } from "../../actions/paginationActions";
+import { useOutsideClick } from "../../hooks";
+import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
 const ItemsPerPage = () => {
-  const { step, searchValue } = useSelector((state) => ({
-    step: state.pagination.step,
-    searchValue: state.search.value,
-  }));
-  const dispatch = useDispatch();
+  const { paginationStep, searchValue } = useSelector(
+    (state) => ({
+      paginationStep: state.pagination.step,
+      searchValue: state.search.value,
+    }),
+    shallowEqual
+  );
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const containerRef = useRef();
+
+  useOutsideClick(containerRef, () => setIsOpen(false));
+
+  const switchIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     !searchValue && (
-      <div className="items_per_page">
-        <ul className="flex_space_between">
-          <li className={step === 10 ? "list_item active_item" : "list_item"}>
-            <button onClick={() => dispatch(setStep(10))}>10</button>
-          </li>
-          <li className={step === 20 ? "list_item active_item" : "list_item"}>
-            <button onClick={() => dispatch(setStep(20))}>20</button>
-          </li>
-          <li className={step === 50 ? "list_item active_item" : "list_item"}>
-            <button onClick={() => dispatch(setStep(50))}>50</button>
-          </li>
-        </ul>
+      <div
+        ref={containerRef}
+        onClick={switchIsOpen}
+        className="items_per_page flex_space_between"
+      >
+        <p>{paginationStep}</p>
+        <RightArrow
+          className="dropdown_arrow"
+          style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
+        />
+        <div
+          className="dropdown_div"
+          style={{ display: isOpen ? "block" : "none" }}
+        >
+          <ul>
+            <DropdownItem number="10" />
+            <DropdownItem number="20" />
+            <DropdownItem number="50" />
+          </ul>
+        </div>
       </div>
     )
   );

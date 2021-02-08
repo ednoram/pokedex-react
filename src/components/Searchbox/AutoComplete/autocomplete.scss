@@ -1,0 +1,31 @@
+@import "../../../styles/variables.scss";
+
+.autocomplete {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  z-index: 999;
+
+  .list_item {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    border: $border;
+    border-top: none;
+    background: white;
+    padding: 10px 12px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .list_item:first-child {
+    border-top: $border;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  .list_item:last-child {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
