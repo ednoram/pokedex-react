@@ -30,7 +30,12 @@
   }
 
   .list_item_active {
-    background: $primaryColor;
+    background: $primaryColor !important;
+    color: white;
+  }
+
+  .list_item:hover {
+    background: gray;
     color: white;
   }
 }
