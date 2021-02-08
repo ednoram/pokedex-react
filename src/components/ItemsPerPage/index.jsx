@@ -51,7 +51,7 @@ const ItemsPerPage = () => {
             </ul>
           </div>
         </div>
-        <p>Cards</p>
+        <p>cards</p>
       </div>
     )
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
@@ -6,21 +6,22 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import "./autocomplete.scss";
 
 import {
-  changeSearchValue,
+  setSearchValue,
   setShowAutoComplete,
 } from "../../../actions/searchActions";
 
 const AutoComplete = ({ inputRef }) => {
-  const { pokemons, searchValue, showAutoComplete } = useSelector(
+  const { pokemons, searchValue } = useSelector(
     (state) => ({
       pokemons: state.pokemons,
       searchValue: state.search.value,
-      showAutoComplete: state.search.showAutoComplete,
     }),
     shallowEqual
   );
 
   const dispatch = useDispatch();
+
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const suggestions = pokemons
     .filter((pokemon) =>
@@ -34,27 +35,55 @@ const AutoComplete = ({ inputRef }) => {
 
   const handleClick = (pokemonName) => {
     inputRef.current.focus();
-    dispatch(changeSearchValue(pokemonName));
+    dispatch(setSearchValue(pokemonName));
     setTimeout(() => dispatch(setShowAutoComplete(false)));
   };
 
+  useEffect(() => {
+    const keydownHandler = (e) => {
+      switch (e.keyCode) {
+        case 13:
+          dispatch(setSearchValue(suggestions[activeIndex]));
+          break;
+        case 38:
+          e.preventDefault();
+          setActiveIndex((index) =>
+            index === 0 || index === -1 ? suggestions.length - 1 : index - 1
+          );
+          break;
+        case 40:
+          e.preventDefault();
+          setActiveIndex((index) =>
+            index === suggestions.length - 1 ? 0 : index + 1
+          );
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", keydownHandler);
+
+    return () => window.removeEventListener("keydown", keydownHandler);
+  }, [suggestions, activeIndex, dispatch]);
+
   return (
-    showAutoComplete && (
-      <div className="autocomplete">
-        <ul>
-          {suggestions.map((name) => (
-            <li
-              role="button"
-              key={nanoid()}
-              className="list_item"
-              onClick={() => handleClick(name)}
-            >
-              <p>{name}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+    <div className="autocomplete">
+      <ul>
+        {suggestions.map((name, index) => (
+          <li
+            role="button"
+            key={nanoid()}
+            onClick={() => handleClick(name)}
+            className={
+              "list_item " + (index === activeIndex ? "list_item_active" : "")
+            }
+          >
+            <p>{name}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

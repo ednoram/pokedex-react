@@ -1,4 +1,4 @@
-export const changeSearchValue = (text) => ({
+export const setSearchValue = (text) => ({
   type: "CHANGE_VALUE",
   text: text,
 });

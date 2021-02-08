@@ -1,6 +1,10 @@
 import produce from "immer";
 
-const INITIAL_STATE = { value: "", typing: false, showAutoComplete: false };
+const INITIAL_STATE = {
+  value: "",
+  typing: false,
+  showAutoComplete: false,
+};
 
 const searchReducer = produce((draft, action) => {
   switch (action.type) {

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import "./searchbox.scss";
 
 import AutoComplete from "./AutoComplete";
 
 import {
-  changeSearchValue,
+  setSearchValue,
   setShowAutoComplete,
 } from "../../actions/searchActions";
 import { useOutsideClick } from "../../hooks";
@@ -14,7 +14,13 @@ import { ReactComponent as XIcon } from "../../assets/x_icon.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
 
 const Searchbox = () => {
-  const searchValue = useSelector((state) => state.search.value);
+  const { searchValue, showAutoComplete } = useSelector(
+    (state) => ({
+      searchValue: state.search.value,
+      showAutoComplete: state.search.showAutoComplete,
+    }),
+    shallowEqual
+  );
   const dispatch = useDispatch();
 
   const inputRef = useRef();
@@ -37,9 +43,14 @@ const Searchbox = () => {
   };
 
   const handleInputChange = debounce(
-    (e) => dispatch(changeSearchValue(e.target.value)),
+    (e) => dispatch(setSearchValue(e.target.value)),
     500
   );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setShowAutoComplete(false));
+  };
 
   useEffect(() => {
     inputRef.current.value = searchValue;
@@ -50,7 +61,7 @@ const Searchbox = () => {
 
   return (
     <div className="searchbox" ref={containerRef}>
-      <form className="searchbox_form" onSubmit={(e) => e.preventDefault()}>
+      <form className="searchbox_form" onSubmit={handleSubmit}>
         <SearchIcon className="search_icon" />
         <input
           type="text"
@@ -63,11 +74,11 @@ const Searchbox = () => {
         {searchValue && (
           <XIcon
             className="x_icon"
-            onClick={() => dispatch(changeSearchValue(""))}
+            onClick={() => dispatch(setSearchValue(""))}
           />
         )}
       </form>
-      <AutoComplete inputRef={inputRef} />
+      {showAutoComplete && <AutoComplete inputRef={inputRef} />}
     </div>
   );
 };

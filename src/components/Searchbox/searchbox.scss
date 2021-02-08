@@ -2,7 +2,7 @@
 
 .searchbox {
   position: relative;
-  max-width: 340px;
+  max-width: 300px;
   width: 100%;
 
   @media (max-width: 960px) {
@@ -19,7 +19,7 @@
     align-items: center;
     border: $border;
     border-radius: 16px;
-    height: 35px;
+    height: 36px;
     padding: 2px 12px;
 
     .search_icon {
