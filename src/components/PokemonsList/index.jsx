@@ -15,7 +15,7 @@ const PokemonsList = () => {
     shallowEqual
   );
 
-  const filteredPokemons = searchValue
+  const filteredPokemons = searchValue.trim()
     ? pokemons.filter((pokemon) =>
         pokemon.name.startsWith(searchValue.trim().toLowerCase())
       )

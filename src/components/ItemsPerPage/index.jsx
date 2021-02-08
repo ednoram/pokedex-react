@@ -27,27 +27,31 @@ const ItemsPerPage = () => {
   };
 
   return (
-    !searchValue && (
-      <div
-        ref={containerRef}
-        onClick={switchIsOpen}
-        className="items_per_page flex_space_between"
-      >
-        <p>{paginationStep}</p>
-        <RightArrow
-          className="dropdown_arrow"
-          style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
-        />
+    !searchValue.trim() && (
+      <div className="items_per_page">
+        <p>Showing</p>
         <div
-          className="dropdown_div"
-          style={{ display: isOpen ? "block" : "none" }}
+          ref={containerRef}
+          onClick={switchIsOpen}
+          className="items_per_page_dropdown flex_space_between"
         >
-          <ul>
-            <DropdownItem number="10" />
-            <DropdownItem number="20" />
-            <DropdownItem number="50" />
-          </ul>
+          <p>{paginationStep}</p>
+          <RightArrow
+            className="dropdown_arrow"
+            style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
+          />
+          <div
+            className="dropdown_div"
+            style={{ display: isOpen ? "block" : "none" }}
+          >
+            <ul>
+              <DropdownItem number="10" />
+              <DropdownItem number="20" />
+              <DropdownItem number="50" />
+            </ul>
+          </div>
         </div>
+        <p>Cards</p>
       </div>
     )
   );

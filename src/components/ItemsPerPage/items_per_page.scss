@@ -1,62 +1,67 @@
 @import "../../styles/variables.scss";
 
 .items_per_page {
-  position: relative;
-  width: 64px;
-  height: 35px;
-  border: $border;
-  border-radius: 16px;
-  user-select: none;
-  cursor: pointer;
-  padding: 6px 13px;
-  margin-right: -1px;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 960px) {
-    display: none !important;
+    display: none;
   }
 
-  .dropdown_arrow {
-    transform: rotate(90deg);
-    width: 10px;
-    fill: $primaryColor;
-    transition: 0.2s;
-  }
-
-  .dropdown_div {
-    position: absolute;
-    width: 100%;
-    top: 40px;
-    left: 0;
+  .items_per_page_dropdown {
+    position: relative;
+    width: 62px;
+    height: 35px;
+    border: $border;
     border-radius: 16px;
-    box-shadow: $boxShadow;
-    background: white;
-    z-index: 999;
+    user-select: none;
+    cursor: pointer;
+    padding: 6px 13px;
+    margin: 0 10px;
 
-    .list_item {
-      height: 32px;
-      padding: 6px 14px;
-      border: $border;
-      border-top: none;
+    .dropdown_arrow {
+      transform: rotate(90deg);
+      width: 10px;
+      fill: $primaryColor;
+      transition: 0.2s;
+    }
 
-      p {
-        margin: auto;
+    .dropdown_div {
+      position: absolute;
+      width: 100%;
+      top: 40px;
+      left: 0;
+      border-radius: 16px;
+      box-shadow: $boxShadow;
+      background: white;
+      z-index: 999;
+
+      .list_item {
+        height: 32px;
+        padding: 6px 14px;
+        border: $border;
+        border-top: none;
+
+        p {
+          margin: auto;
+        }
       }
-    }
 
-    .list_item_active {
-      background: $primaryColor;
-      color: white;
-    }
+      .list_item_active {
+        background: $primaryColor;
+        color: white;
+      }
 
-    .list_item:first-child {
-      border-top: $border;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
-    }
+      .list_item:first-child {
+        border-top: $border;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
 
-    .list_item:last-child {
-      border-bottom-left-radius: 16px;
-      border-bottom-right-radius: 16px;
+      .list_item:last-child {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
     }
   }
 }

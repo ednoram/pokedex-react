@@ -41,11 +41,11 @@
 
   .pagination_prev_next {
     @extend .pagination_button;
-    width: 74px;
+    width: 72px;
     padding: 6px 10px;
 
     svg {
-      width: 13px;
+      width: 12px;
     }
   }
 }
