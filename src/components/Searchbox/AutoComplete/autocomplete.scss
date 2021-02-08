@@ -5,6 +5,8 @@
   top: 42px;
   width: 100%;
   z-index: 999;
+  border-radius: 16px;
+  box-shadow: $boxShadow;
 
   .list_item {
     display: flex;
