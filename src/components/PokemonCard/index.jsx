@@ -43,7 +43,7 @@ const PokemonCard = ({ pokemon }) => {
       </div>
     </div>
   ) : (
-    <div className="pokemon_card">
+    <div className="pokemon_card flex_center">
       <p className="loading_p">Loading...</p>
     </div>
   );
