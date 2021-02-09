@@ -19,20 +19,18 @@ const PokemonCard = ({ pokemon }) => {
     return () => setPokemonData(null);
   }, [pokemon]);
 
-  return (
+  return pokemonId && pokemonData ? (
     <div className="pokemon_card">
-      <p className="pokemon_id">{"#" + `00${pokemonData?.id}`.slice(-3)}</p>
+      <p className="pokemon_id">{"#" + pokemonId.slice(-3)}</p>
 
       <Link className="pokemon_link" to={`/${pokemon.name.toLowerCase()}`}>
-        {pokemonId && (
-          <div
-            className="pokemon_avatar_div"
-            onClick={() => window.scroll(0, 0)}
-            style={{
-              backgroundImage: `URL(https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemonId}.png)`,
-            }}
-          />
-        )}
+        <div
+          className="pokemon_avatar_div"
+          onClick={() => window.scroll(0, 0)}
+          style={{
+            backgroundImage: `URL(https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemonId}.png)`,
+          }}
+        />
       </Link>
       <div className="pokemon_card_info">
         <h3 className="pokemon_name">{pokemon.name}</h3>
@@ -43,6 +41,10 @@ const PokemonCard = ({ pokemon }) => {
             ))}
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="pokemon_card">
+      <p className="loading_p">Loading...</p>
     </div>
   );
 };

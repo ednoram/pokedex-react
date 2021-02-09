@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import "./show_more.scss";
@@ -6,8 +6,6 @@ import "./show_more.scss";
 import { setStep } from "../../actions/paginationActions";
 
 const ShowMore = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   const { pokemons, paginationStep, searchValue } = useSelector(
     (state) => ({
       pokemons: state.pokemons,
@@ -19,13 +17,10 @@ const ShowMore = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    window.scroll(0, scrollPosition);
-  }, [scrollPosition]);
-
   const handleClick = () => {
-    setScrollPosition(window.scrollY);
+    const scrollPosition = window.scrollY;
     dispatch(setStep(paginationStep + 20));
+    setTimeout((scrollY = scrollPosition) => window.scroll(0, scrollY), 300);
   };
 
   return paginationStep < pokemons.length && !searchValue ? (
