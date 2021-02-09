@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { useSelector, shallowEqual } from "react-redux";
 
 import "./pokemons_list.scss";
+
 import { PokemonCard } from "..";
 
 const PokemonsList = () => {
