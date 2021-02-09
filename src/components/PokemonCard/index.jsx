@@ -35,10 +35,9 @@ const PokemonCard = ({ pokemon }) => {
       <div className="pokemon_card_info">
         <h3 className="pokemon_name">{pokemon.name}</h3>
         <div className="pokemon_types">
-          {pokemonData?.types &&
-            pokemonData.types.map((type) => (
-              <div key={nanoid()}>{type.type.name}</div>
-            ))}
+          {pokemonData.types.map((type) => (
+            <div key={nanoid()}>{type.type.name}</div>
+          ))}
         </div>
       </div>
     </div>
