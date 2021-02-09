@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -9,6 +8,7 @@ import "./pokemon_page_container.scss";
 
 import { PageNotFoundContainer } from "..";
 
+import HelmetLayout from "../../layouts/HelmetLayout";
 import { PokemonTable, PokemonEvolutions } from "../../components";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
@@ -75,11 +75,7 @@ const PokemonPageContainer = () => {
   }, [pokemon]);
 
   return pokemon && pokemonData ? (
-    <>
-      <Helmet>
-        <meta name="description" content={`${pageTitle}`} />
-        <title>{pageTitle}</title>
-      </Helmet>
+    <HelmetLayout title={pageTitle} metaDescription={pageTitle}>
       <div className="pokemon_page_container">
         <div className="container">
           <div className="top_btns">
@@ -122,7 +118,7 @@ const PokemonPageContainer = () => {
           )}
         </div>
       </div>
-    </>
+    </HelmetLayout>
   ) : (
     <PageNotFoundContainer />
   );

@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import "./pokemon_card.scss";
 
 const PokemonCard = ({ pokemon }) => {
-  const [pokemonData, setPokemonData] = useState({});
   const [pokemonId, setPokemonId] = useState();
+  const [pokemonData, setPokemonData] = useState({});
 
   useEffect(() => {
     axios.get(pokemon.url).then((response) => {

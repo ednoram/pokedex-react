@@ -1,16 +1,16 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 import "./page_not_found_container.scss";
 
+import HelmetLayout from "../../layouts/HelmetLayout";
+
 const PageNotFoundContainer = () => {
   return (
-    <>
-      <Helmet>
-        <meta name="description" content={"404 Page Not Found | Pokédex"} />
-        <title>404 Page Not Found | Pokédex</title>
-      </Helmet>
+    <HelmetLayout
+      title="404 Page Not Found | Pokédex"
+      metaDescription="404 Page Not Found | Pokédex"
+    >
       <div className="page_not_found_container">
         <div className="container">
           <h2 className="page_title">404 Page not found</h2>
@@ -23,7 +23,7 @@ const PageNotFoundContainer = () => {
           </div>
         </div>
       </div>
-    </>
+    </HelmetLayout>
   );
 };
 

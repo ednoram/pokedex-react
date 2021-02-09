@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
 
 import "./home_container.scss";
@@ -11,6 +10,7 @@ import {
   PokemonsList,
   ItemsPerPage,
 } from "../../components";
+import HelmetLayout from "../../layouts/HelmetLayout";
 import { setShowAutoComplete } from "../../actions/searchActions";
 
 const HomePageContainer = () => {
@@ -21,11 +21,7 @@ const HomePageContainer = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Helmet>
-        <meta name="description" content={"Home Page | Pokédex"} />
-        <title>Pokédex</title>
-      </Helmet>
+    <HelmetLayout title="Pokédex" metaDescription="Home Page | Pokédex">
       <div className="home_container">
         <div className="container">
           <h1 className="title">Pokédex</h1>
@@ -38,7 +34,7 @@ const HomePageContainer = () => {
           <ShowMore />
         </div>
       </div>
-    </>
+    </HelmetLayout>
   );
 };
 
