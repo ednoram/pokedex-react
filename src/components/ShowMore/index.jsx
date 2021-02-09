@@ -18,9 +18,7 @@ const ShowMore = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    const scrollPosition = window.scrollY;
     dispatch(setStep(paginationStep + 20));
-    setTimeout((scrollY = scrollPosition) => window.scroll(0, scrollY), 500);
   };
 
   return paginationStep < pokemons.length && !searchValue ? (

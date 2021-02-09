@@ -9,6 +9,7 @@
   padding: 16px;
   box-shadow: $boxShadow;
   position: relative;
+  min-height: 200px;
 
   .pokemon_card_info {
     width: 100%;
@@ -56,6 +57,10 @@
       border-radius: 8px;
       margin-right: 5px;
     }
+  }
+
+  .loading_p {
+    line-height: 200px;
   }
 }
 
