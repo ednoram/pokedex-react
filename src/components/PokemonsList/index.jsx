@@ -27,7 +27,7 @@ const PokemonsList = () => {
   ) : (
     <div className="pokemons_list">
       {filteredPokemons.map((pokemon) => (
-        <PokemonCard pokemon={pokemon} key={nanoid()} />
+        <PokemonCard key={nanoid()} pokemon={pokemon} />
       ))}
     </div>
   );
