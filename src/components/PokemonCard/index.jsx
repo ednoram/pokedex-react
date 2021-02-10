@@ -14,6 +14,7 @@ const PokemonCard = ({ pokemon }) => {
   useEffect(() => {
     axios.get(pokemon.url).then((response) => {
       setPokemonData(response.data);
+      dispatch(cacheData(pokemon.name, response.data));
     });
 
     return () => setPokemonData(null);
