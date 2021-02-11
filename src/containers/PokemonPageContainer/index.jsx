@@ -88,7 +88,7 @@ const PokemonPageContainer = () => {
             </Link>
             <NextBtn />
           </div>
-          <div>
+          <div className="pokemon_page_header">
             <div className="title_and_btns flex_center">
               <PrevBtn />
               <h2 className="pokemon_name">{pokemon.name}</h2>
