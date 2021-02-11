@@ -2,10 +2,10 @@ import React from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 
-import "./pokemon_stats_grid.scss";
 import StatBlocks from "./StatBlocks";
+import styles from "./pokemon_stats_grid.module.scss";
 
-const PokemonStatsGrid = ({ pokemonData }) => {
+const PokemonStatsGrid = ({ pokemonData, className }) => {
   const maxStatValues = {
     hp: 255,
     speed: 200,
@@ -16,14 +16,14 @@ const PokemonStatsGrid = ({ pokemonData }) => {
   };
 
   return pokemonData.stats ? (
-    <div className="pokemon_table_grid pokemon_stats_grid">
+    <div className={[className, styles.pokemon_stats_grid].join(" ")}>
       {pokemonData.stats.map((stat, index) => [
         <div
           key={nanoid()}
           className={
-            "grid_item " +
+            styles.grid_item +
             (index === pokemonData.stats.length - 1
-              ? "border_bottom_left_radius-16"
+              ? " border_bottom_left_radius-16"
               : "")
           }
         >
@@ -32,8 +32,9 @@ const PokemonStatsGrid = ({ pokemonData }) => {
         <div
           key={nanoid()}
           className={
-            "flex_space_between grid_item " +
-            (index === 0 ? "border_top_right_radius-16" : "")
+            "flex_space_between " +
+            styles.grid_item +
+            (index === 0 ? " border_top_right_radius-16" : "")
           }
         >
           <StatBlocks
@@ -46,10 +47,12 @@ const PokemonStatsGrid = ({ pokemonData }) => {
 };
 
 PokemonStatsGrid.propTypes = {
+  className: PropTypes.string,
   pokemonData: PropTypes.object,
 };
 
 PokemonStatsGrid.defaultProps = {
+  className: "",
   pokemonData: {},
 };
 

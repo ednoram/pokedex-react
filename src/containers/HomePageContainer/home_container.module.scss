@@ -14,18 +14,4 @@
     font-size: 60px;
     margin-bottom: 36px;
   }
-
-  .show_more {
-    display: none;
-
-    @media (max-width: 768px) {
-      display: flex;
-    }
-  }
-
-  .pagination {
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
 }

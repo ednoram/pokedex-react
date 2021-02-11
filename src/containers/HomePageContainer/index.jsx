@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import "./home_container.scss";
+import styles from "./home_container.module.scss";
 
 import HelmetLayout from "../../layouts/HelmetLayout";
 import { setShowAutoComplete } from "../../actions/searchActions";
-import { Searchbox, PokemonsList, ItemsPerPage } from "../../components";
+import { Searchbox, PokemonsList, CardsPerPage } from "../../components";
 
 const HomePageContainer = () => {
   const dispatch = useDispatch();
@@ -16,12 +16,12 @@ const HomePageContainer = () => {
 
   return (
     <HelmetLayout title="Pokédex" metaDescription="Home Page | Pokédex">
-      <div className="home_container">
+      <div className={styles.home_container}>
         <div className="container">
-          <h1 className="title">Pokédex</h1>
+          <h1 className={styles.title}>Pokédex</h1>
           <div className="flex_space_between">
             <Searchbox />
-            <ItemsPerPage />
+            <CardsPerPage />
           </div>
           <PokemonsList />
         </div>

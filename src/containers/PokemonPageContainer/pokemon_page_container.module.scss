@@ -8,7 +8,7 @@
   }
 
   @media (max-width: 400px) {
-    padding: 40px 0 90px;
+    padding: 50px 0 90px;
   }
 
   .top_btns {
@@ -74,7 +74,7 @@
       text-align: center;
 
       @media (max-width: 820px) {
-        margin-top: 16px;
+        margin-top: 20px;
       }
 
       .prev_next_btn {
@@ -103,19 +103,6 @@
       font-style: italic;
       font-size: 18px;
       margin-top: 4px;
-    }
-
-    .prev_next_btn {
-      width: 42px;
-      height: 42px;
-      background-color: $primaryColor;
-      border-radius: 50%;
-
-      svg {
-        fill: white;
-        width: 22px;
-        height: 22px;
-      }
     }
   }
 
@@ -149,7 +136,7 @@
     display: flex;
     justify-content: center;
 
-    @media (max-width: 400px) {
+    @media (max-width: 820px) {
       margin-top: 20px;
     }
   }
@@ -166,6 +153,19 @@
     @media (max-width: 820px) {
       width: 280px;
       height: 280px;
+    }
+  }
+
+  .prev_next_btn {
+    width: 42px;
+    height: 42px;
+    background-color: $primaryColor;
+    border-radius: 50%;
+
+    svg {
+      fill: white;
+      width: 22px;
+      height: 22px;
     }
   }
 

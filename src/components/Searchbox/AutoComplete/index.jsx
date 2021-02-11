@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import "./autocomplete.scss";
+import styles from "./autocomplete.module.scss";
 
 import {
   setSearchValue,
@@ -73,16 +73,17 @@ const AutoComplete = ({ inputRef }) => {
   });
 
   return (
-    <div className="autocomplete">
+    <div className={styles.autocomplete}>
       <ul>
         {suggestions.map((name, index) => (
           <li
             role="button"
             key={nanoid()}
             onClick={() => handleClick(name)}
-            className={
-              "list_item " + (index === activeIndex ? "list_item_active" : "")
-            }
+            className={[
+              styles.list_item,
+              index === activeIndex ? styles.list_item_active : "",
+            ].join(" ")}
           >
             <p>{name}</p>
           </li>

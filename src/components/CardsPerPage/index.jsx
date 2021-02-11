@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 
-import "./items_per_page.scss";
 import DropdownItem from "./DropdownItem";
+import styles from "./cards_per_page.module.scss";
 
 import { useOutsideClick } from "../../hooks";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
-const ItemsPerPage = () => {
+const CardsPerPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { paginationStep, searchValue } = useSelector(
@@ -27,20 +27,20 @@ const ItemsPerPage = () => {
   };
 
   return !searchValue.trim() ? (
-    <div className="items_per_page">
+    <div className={styles.items_per_page}>
       <p>Showing</p>
       <div
         ref={containerRef}
         onClick={switchIsOpen}
-        className="items_per_page_dropdown flex_space_between"
+        className={styles.dropdown_item + " flex_space_between"}
       >
         <p>{paginationStep}</p>
         <RightArrow
-          className="dropdown_arrow"
+          className={styles.dropdown_arrow}
           style={{ transform: isOpen ? "rotate(270deg)" : "rotate(90deg)" }}
         />
         <div
-          className="dropdown_div"
+          className={styles.dropdown_div}
           style={{ display: isOpen ? "block" : "none" }}
         >
           <ul>
@@ -55,4 +55,4 @@ const ItemsPerPage = () => {
   ) : null;
 };
 
-export default ItemsPerPage;
+export default CardsPerPage;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import "./pokemon_page_container.scss";
+import styles from "./pokemon_page_container.module.scss";
 
 import { PageNotFoundContainer } from "..";
 
@@ -34,13 +34,13 @@ const PokemonPageContainer = () => {
 
     return pokemonData.id !== 1 ? (
       <Link to={"/" + prevPokemonName}>
-        <div className="prev_next_btn flex_center" role="button">
+        <div className={styles.prev_next_btn + " flex_center"} role="button">
           <RightArrow className="flip" />
         </div>
       </Link>
     ) : (
       <div
-        className="prev_next_btn"
+        className={styles.prev_next_btn}
         style={{ backgroundColor: "transparent" }}
       ></div>
     );
@@ -51,13 +51,13 @@ const PokemonPageContainer = () => {
 
     return pokemonData.id !== pokemons.length ? (
       <Link to={"/" + nextPokemonName}>
-        <div className="prev_next_btn flex_center" role="button">
+        <div className={styles.prev_next_btn + " flex_center"} role="button">
           <RightArrow />
         </div>
       </Link>
     ) : (
       <div
-        className="prev_next_btn"
+        className={styles.prev_next_btn}
         style={{ backgroundColor: "transparent" }}
       ></div>
     );
@@ -76,45 +76,45 @@ const PokemonPageContainer = () => {
 
   return pokemon && pokemonData ? (
     <HelmetLayout title={pageTitle} metaDescription={pageTitle}>
-      <div className="pokemon_page_container">
+      <div className={styles.pokemon_page_container}>
         <div className="container">
-          <div className="top_btns">
+          <div className={styles.top_btns}>
             <PrevBtn />
             <Link to="/">
-              <div className="home_btn" role="button">
+              <div className={styles.home_btn} role="button">
                 <RightArrow className="flip" />
                 <p>Home</p>
               </div>
             </Link>
             <NextBtn />
           </div>
-          <div className="pokemon_page_header">
-            <div className="title_and_btns flex_center">
+          <div className={styles.pokemon_page_header}>
+            <div className={styles.title_and_btns + " flex_center"}>
               <PrevBtn />
-              <h2 className="pokemon_name">{pokemon.name}</h2>
+              <h2 className={styles.pokemon_name}>{pokemon.name}</h2>
               <NextBtn />
             </div>
-            <p className="pokemon_id">#{pokemonId}</p>
+            <p className={styles.pokemon_id}>#{pokemonId}</p>
           </div>
           {fetchFinished ? (
-            <div className="content">
-              <div className="pokemon_img_container">
+            <div className={styles.content}>
+              <div className={styles.pokemon_img_container}>
                 {pokemonId && (
                   <img
                     alt="pokemon avatar"
-                    className="pokemon_img"
+                    className={styles.pokemon_img}
                     src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png`}
                   />
                 )}
               </div>
-              <div className="pokemon_info_tables">
+              <div className={styles.pokemon_info_tables}>
                 <PokemonTable pokemonData={pokemonData} type="info" />
                 <PokemonTable pokemonData={pokemonData} type="stats" />
               </div>
               <PokemonEvolutions pokemonData={pokemonData} />
             </div>
           ) : (
-            <p className="loading_p">Loading...</p>
+            <p className={styles.loading_p + " loading_p"}>Loading...</p>
           )}
         </div>
       </div>

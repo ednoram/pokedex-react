@@ -4,9 +4,9 @@ import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import "./pokemon_card.scss";
+import styles from "./pokemon_card.module.scss";
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, className }) => {
   const [pokemonData, setPokemonData] = useState({});
 
   const pokemonId = `00${pokemonData?.id}`.slice(-3);
@@ -20,21 +20,24 @@ const PokemonCard = ({ pokemon }) => {
   }, [pokemon]);
 
   return Number(pokemonId) && pokemonData ? (
-    <div className="pokemon_card">
-      <p className="pokemon_id">{"#" + pokemonId.slice(-3)}</p>
+    <div className={[styles.pokemon_card, className].join(" ")}>
+      <p className={styles.pokemon_id}>{"#" + pokemonId.slice(-3)}</p>
 
-      <Link className="pokemon_link" to={`/${pokemon.name.toLowerCase()}`}>
+      <Link
+        className={styles.pokemon_link}
+        to={`/${pokemon.name.toLowerCase()}`}
+      >
         <div
-          className="pokemon_avatar_div"
+          className={styles.pokemon_avatar_div}
           onClick={() => window.scroll(0, 0)}
           style={{
             backgroundImage: `URL(https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemonId}.png)`,
           }}
         />
       </Link>
-      <div className="pokemon_card_info">
-        <h3 className="pokemon_name">{pokemon.name}</h3>
-        <div className="pokemon_types">
+      <div className={styles.pokemon_card_info}>
+        <h3 className={styles.pokemon_name}>{pokemon.name}</h3>
+        <div className={styles.pokemon_types}>
           {pokemonData.types.map((type) => (
             <div key={nanoid()}>{type.type.name}</div>
           ))}
@@ -42,7 +45,7 @@ const PokemonCard = ({ pokemon }) => {
       </div>
     </div>
   ) : (
-    <div className="pokemon_card flex_center">
+    <div className={styles.pokemon_card + " flex_center"}>
       <p className="loading_p">Loading...</p>
     </div>
   );
@@ -50,10 +53,12 @@ const PokemonCard = ({ pokemon }) => {
 
 PokemonCard.propTypes = {
   pokemon: PropTypes.object,
+  className: PropTypes.string,
 };
 
 PokemonCard.defaultProps = {
   pokemon: {},
+  className: "",
 };
 
 export default PokemonCard;

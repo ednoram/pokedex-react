@@ -9,6 +9,10 @@
     justify-content: center;
   }
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   .pagination_button {
     width: 36px;
     height: 36px;

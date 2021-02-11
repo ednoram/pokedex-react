@@ -2,7 +2,8 @@ import React from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
-import "./pagination.scss";
+import styles from "./pagination.module.scss";
+
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 import { nextPage, prevPage, setPage } from "../../actions/paginationActions";
 
@@ -48,9 +49,9 @@ const Pagination = () => {
 
   return (
     (!searchValue || pokemons.length <= pagination.step) && (
-      <div className="pagination">
+      <div className={styles.pagination}>
         <button
-          className="pagination_prev_next flex_space_between"
+          className={styles.pagination_prev_next + " flex_space_between"}
           onClick={prevPageHandler}
         >
           <RightArrow className="flip" />
@@ -60,16 +61,16 @@ const Pagination = () => {
           <button
             key={nanoid()}
             onClick={() => changePageHandler(name)}
-            className={
-              "pagination_button " +
-              (currentPage === name ? "current_page_btn" : "")
-            }
+            className={[
+              styles.pagination_button,
+              currentPage === name ? styles.current_page_btn : "",
+            ].join(" ")}
           >
             {name}
           </button>
         ))}
         <button
-          className="pagination_prev_next flex_space_between"
+          className={styles.pagination_prev_next + " flex_space_between"}
           onClick={nextPageHandler}
         >
           Next

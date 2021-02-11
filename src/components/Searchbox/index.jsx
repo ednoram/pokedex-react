@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import "./searchbox.scss";
-
 import AutoComplete from "./AutoComplete";
+import styles from "./searchbox.module.scss";
 
 import {
   setSearchValue,
@@ -61,20 +60,20 @@ const Searchbox = () => {
   }, [searchValue, dispatch]);
 
   return (
-    <div className="searchbox" ref={containerRef}>
-      <form className="searchbox_form" onSubmit={handleSubmit}>
-        <SearchIcon className="search_icon" />
+    <div className={styles.searchbox} ref={containerRef}>
+      <form className={styles.searchbox_form} onSubmit={handleSubmit}>
+        <SearchIcon className={styles.search_icon} />
         <input
           type="text"
           ref={inputRef}
-          className="search_input"
           onChange={handleInputChange}
           placeholder="Search By Name"
+          className={styles.search_input}
           onClick={() => searchValue && dispatch(setShowAutoComplete(true))}
         />
         {searchValue && (
           <XIcon
-            className="x_icon"
+            className={styles.x_icon}
             onClick={() => dispatch(setSearchValue(""))}
           />
         )}

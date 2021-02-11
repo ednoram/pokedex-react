@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import "./pokemons_list.scss";
+import styles from "./pokemons_list.module.scss";
 
 import { PokemonCard } from "..";
 
@@ -78,14 +78,16 @@ const PokemonsList = () => {
   }, [searchValue]);
 
   return filteredPokemons.length < 1 ? (
-    <p className="nothing_was_found">Nothing was found.</p>
+    <p className={styles.nothing_was_found}>Nothing was found.</p>
   ) : (
     <>
-      <div className="pokemons_list">
+      <div className={styles.pokemons_list}>
         {filteredPokemons.slice(0, limit).map((pokemon) => (
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
         ))}
-        {loading && <p className="loading_p load_more_loading_p">Loading...</p>}
+        {loading && (
+          <p className={styles.loading_p + " loading_p"}>Loading...</p>
+        )}
       </div>
       <Pagination />
     </>

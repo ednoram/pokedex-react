@@ -4,23 +4,33 @@ import PropTypes from "prop-types";
 import PokemonInfoGrid from "./PokemonInfoGrid";
 import PokemonStatsGrid from "./PokemonStatsGrid";
 
-import "./pokemon_table.scss";
+import styles from "./pokemon_table.module.scss";
 
 const PokemonTable = ({ type, pokemonData }) => {
   const Grid = () => {
     switch (type) {
       case "info":
-        return <PokemonInfoGrid pokemonData={pokemonData} />;
+        return (
+          <PokemonInfoGrid
+            pokemonData={pokemonData}
+            className={styles.pokemon_table_grid}
+          />
+        );
       case "stats":
-        return <PokemonStatsGrid pokemonData={pokemonData} />;
+        return (
+          <PokemonStatsGrid
+            pokemonData={pokemonData}
+            className={styles.pokemon_table_grid}
+          />
+        );
       default:
         return <></>;
     }
   };
 
   return (
-    <div className="pokemon_table">
-      <div className="pokemon_table_content">
+    <div className={styles.pokemon_table}>
+      <div className={styles.pokemon_table_content}>
         <h3>{type[0].toUpperCase() + type.slice(1)}</h3>
         <Grid />
       </div>

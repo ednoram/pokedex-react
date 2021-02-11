@@ -18,16 +18,16 @@
     grid-template-columns: 1fr;
   }
 
-  .load_more_loading_p {
+  .loading_p {
     position: absolute;
     bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
   }
-}
 
-.nothing_was_found {
-  font-size: 18px;
-  text-align: center;
-  margin-top: 40px;
+  .nothing_was_found {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 40px;
+  }
 }

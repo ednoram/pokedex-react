@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 
+import styles from "./cards_per_page.module.scss";
+
 import { setStep } from "../../actions/paginationActions";
 
 const DropdownItem = ({ number }) => {
@@ -15,8 +17,9 @@ const DropdownItem = ({ number }) => {
       role="button"
       onClick={() => dispatch(setStep(num))}
       className={
-        "list_item flex_space_between " +
-        (paginationStep === num ? "list_item_active" : "")
+        styles.list_item +
+        " flex_space_between " +
+        (paginationStep === num ? styles.list_item_active : "")
       }
     >
       <p>{num}</p>

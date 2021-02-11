@@ -8,7 +8,7 @@ import { PokemonCard } from "..";
 
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
-import "./pokemon_evolutions.scss";
+import styles from "./pokemon_evolutions.module.scss";
 
 const PokemonEvolution = ({ pokemonData }) => {
   const [evolutionPokemons, setEvolutionPokemons] = useState([]);
@@ -17,11 +17,11 @@ const PokemonEvolution = ({ pokemonData }) => {
 
   const evolutions = evolutionPokemons.map((pokemon, index) => [
     <li className="flex_center" key={nanoid()}>
-      <PokemonCard pokemon={pokemon} />
+      <PokemonCard pokemon={pokemon} className={styles.pokemon_card} />
     </li>,
     <li className="flex_center" key={nanoid()}>
       {index !== evolutionPokemons.length - 1 && (
-        <RightArrow className="arrow" />
+        <RightArrow className={styles.arrow} />
       )}
     </li>,
   ]);
@@ -54,12 +54,12 @@ const PokemonEvolution = ({ pokemonData }) => {
   }, [pokemonData, pokemons]);
 
   return (
-    <div className="pokemon_evolutions">
+    <div className={styles.pokemon_evolutions}>
       <h3>Evolutions</h3>
       {evolutionPokemons[0] ? (
-        <ul className="evolutions_list">{evolutions}</ul>
+        <ul className={styles.evolutions_list}>{evolutions}</ul>
       ) : (
-        <p className="loading_p">Loading...</p>
+        <p className={styles.loading_p + " loading_p"}>Loading...</p>
       )}
     </div>
   );
