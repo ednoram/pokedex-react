@@ -8,6 +8,8 @@ import { useOutsideClick } from "../../hooks";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
 const ItemsPerPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { paginationStep, searchValue } = useSelector(
     (state) => ({
       searchValue: state.search.value,
@@ -15,8 +17,6 @@ const ItemsPerPage = () => {
     }),
     shallowEqual
   );
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const containerRef = useRef();
 

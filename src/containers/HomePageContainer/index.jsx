@@ -3,15 +3,9 @@ import { useDispatch } from "react-redux";
 
 import "./home_container.scss";
 
-import {
-  ShowMore,
-  Searchbox,
-  Pagination,
-  PokemonsList,
-  ItemsPerPage,
-} from "../../components";
 import HelmetLayout from "../../layouts/HelmetLayout";
 import { setShowAutoComplete } from "../../actions/searchActions";
+import { Searchbox, PokemonsList, ItemsPerPage } from "../../components";
 
 const HomePageContainer = () => {
   const dispatch = useDispatch();
@@ -30,8 +24,6 @@ const HomePageContainer = () => {
             <ItemsPerPage />
           </div>
           <PokemonsList />
-          <Pagination />
-          <ShowMore />
         </div>
       </div>
     </HelmetLayout>

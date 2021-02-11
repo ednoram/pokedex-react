@@ -11,6 +11,8 @@ import {
 } from "../../../actions/searchActions";
 
 const AutoComplete = ({ inputRef }) => {
+  const [activeIndex, setActiveIndex] = useState(-1);
+
   const { pokemons, searchValue } = useSelector(
     (state) => ({
       pokemons: state.pokemons,
@@ -20,8 +22,6 @@ const AutoComplete = ({ inputRef }) => {
   );
 
   const dispatch = useDispatch();
-
-  const [activeIndex, setActiveIndex] = useState(-1);
 
   const suggestions = pokemons
     .filter((pokemon) =>

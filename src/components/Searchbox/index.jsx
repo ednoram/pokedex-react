@@ -21,6 +21,7 @@ const Searchbox = () => {
     }),
     shallowEqual
   );
+
   const dispatch = useDispatch();
 
   const inputRef = useRef();

@@ -11,8 +11,20 @@ import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 import "./pokemon_evolutions.scss";
 
 const PokemonEvolution = ({ pokemonData }) => {
-  const pokemons = useSelector((state) => state.pokemons);
   const [evolutionPokemons, setEvolutionPokemons] = useState([]);
+
+  const pokemons = useSelector((state) => state.pokemons);
+
+  const evolutions = evolutionPokemons.map((pokemon, index) => [
+    <li className="flex_center" key={nanoid()}>
+      <PokemonCard pokemon={pokemon} />
+    </li>,
+    <li className="flex_center" key={nanoid()}>
+      {index !== evolutionPokemons.length - 1 && (
+        <RightArrow className="arrow" />
+      )}
+    </li>,
+  ]);
 
   useEffect(() => {
     if (!pokemonData.species) return;
@@ -45,18 +57,7 @@ const PokemonEvolution = ({ pokemonData }) => {
     <div className="pokemon_evolutions">
       <h3>Evolutions</h3>
       {evolutionPokemons[0] ? (
-        <ul className="evolutions_list">
-          {evolutionPokemons.map((pokemon, index) => [
-            <li className="flex_center" key={nanoid()}>
-              <PokemonCard pokemon={pokemon} />
-            </li>,
-            <li className="flex_center" key={nanoid()}>
-              {index !== evolutionPokemons.length - 1 && (
-                <RightArrow className="arrow" />
-              )}
-            </li>,
-          ])}
-        </ul>
+        <ul className="evolutions_list">{evolutions}</ul>
       ) : (
         <p className="loading_p">Loading...</p>
       )}

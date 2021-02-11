@@ -1,4 +1,5 @@
 .pokemons_list {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
@@ -15,6 +16,13 @@
 
   @media (max-width: 380px) {
     grid-template-columns: 1fr;
+  }
+
+  .load_more_loading_p {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
