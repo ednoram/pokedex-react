@@ -51,7 +51,7 @@ const PokemonsList = () => {
             if (loading) return;
 
             if (searchValue) {
-              setLimit((limit) => limit + (windowSize.width <= 768 ? 20 : 50));
+              setLimit((limit) => limit + (windowSize.width <= 768 ? 20 : 60));
             } else if (windowSize.width <= 768) {
               setLimit(Infinity);
               dispatch(setStep(pagination.step + 20));
@@ -73,7 +73,7 @@ const PokemonsList = () => {
 
   useEffect(() => {
     if (searchValue) {
-      setLimit(window.innerWidth <= 768 ? 20 : 50);
+      setLimit(window.innerWidth <= 768 ? 20 : 60);
     }
   }, [searchValue]);
 
