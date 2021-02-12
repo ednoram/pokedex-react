@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { fetchPokemonsData } from "./actions/pokemonsActions";
 import {
