@@ -2,10 +2,6 @@
 
 This is a React app that shows pokemons (API: [pokeapi.co](https://www.pokeapi.co)) in a list with some information about them.
 
-## Demo
-
-> https://pokedex.ednoram.vercel.app/
-
 ## Features
 
 - Pokemons are displayed in cards with their name, avatar and type.
@@ -13,6 +9,14 @@ This is a React app that shows pokemons (API: [pokeapi.co](https://www.pokeapi.c
 - When you click on a pokemon in the list, a new page opens with some detailed information about the pokemon.
 - The pokemons can be filtered by name with a searchbox.
 - The app is responsive (looks good on both mobile and desktop).
+
+## Demo
+
+> https://pokedex.ednoram.vercel.app/
+
+## Screenshot
+
+![screenshot](/public/screenshot.png)
 
 ## Technologies
 
