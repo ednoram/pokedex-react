@@ -16,11 +16,11 @@ const DropdownItem = ({ number }) => {
     <li
       role="button"
       onClick={() => dispatch(setStep(num))}
-      className={
-        styles.list_item +
-        " flex_space_between " +
-        (paginationStep === num ? styles.list_item_active : "")
-      }
+      className={[
+        styles.list_item,
+        "flex_space_between",
+        paginationStep === num ? styles.list_item_active : "",
+      ].join(" ")}
     >
       <p>{num}</p>
     </li>

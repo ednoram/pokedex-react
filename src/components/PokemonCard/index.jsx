@@ -28,8 +28,8 @@ const PokemonCard = ({ pokemon, className }) => {
         to={`/${pokemon.name.toLowerCase()}`}
       >
         <div
-          className={styles.pokemon_avatar_div}
           onClick={() => window.scroll(0, 0)}
+          className={styles.pokemon_avatar_div}
           style={{
             backgroundImage: `URL(https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemonId}.png)`,
           }}
@@ -45,7 +45,7 @@ const PokemonCard = ({ pokemon, className }) => {
       </div>
     </div>
   ) : (
-    <div className={styles.pokemon_card + " flex_center"}>
+    <div className={[styles.pokemon_card, className, " flex_center"].join(" ")}>
       <p className="loading_p">Loading...</p>
     </div>
   );
