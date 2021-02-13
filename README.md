@@ -1,6 +1,6 @@
 # Pokédex
 
-This is a React app that shows pokemons (API: [pokeapi.co](https://www.pokeapi.co)) in a list with some information about them.
+This is a React app that shows pokemons from API ([pokeapi.co](https://www.pokeapi.co)) in a list with some information about them.
 
 ## Features
 
