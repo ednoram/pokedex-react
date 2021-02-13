@@ -43,9 +43,8 @@ const AutoComplete = ({ inputRef }) => {
     const keydownHandler = (e) => {
       switch (e.keyCode) {
         case 13:
-          const newValue = suggestions[activeIndex];
-          if (newValue) {
-            dispatch(setSearchValue(newValue));
+          if (suggestions[activeIndex]) {
+            dispatch(setSearchValue(suggestions[activeIndex]));
           } else {
             dispatch(setShowAutoComplete(false));
           }

@@ -47,38 +47,36 @@ const Pagination = () => {
     window.scroll(0, 0);
   };
 
-  return (
-    (!searchValue || pokemons.length <= pagination.step) && (
-      <div className={styles.pagination}>
+  return !searchValue || pokemons.length <= pagination.step ? (
+    <div className={styles.pagination}>
+      <button
+        onClick={prevPageHandler}
+        className={styles.pagination_prev_next + " flex_space_between"}
+      >
+        <RightArrow className="flip" />
+        Prev.
+      </button>
+      {buttonNames.map((name) => (
         <button
-          className={styles.pagination_prev_next + " flex_space_between"}
-          onClick={prevPageHandler}
+          key={nanoid()}
+          onClick={() => changePageHandler(name)}
+          className={[
+            styles.pagination_button,
+            currentPage === name ? styles.current_page_btn : "",
+          ].join(" ")}
         >
-          <RightArrow className="flip" />
-          Prev.
+          {name}
         </button>
-        {buttonNames.map((name) => (
-          <button
-            key={nanoid()}
-            onClick={() => changePageHandler(name)}
-            className={[
-              styles.pagination_button,
-              currentPage === name ? styles.current_page_btn : "",
-            ].join(" ")}
-          >
-            {name}
-          </button>
-        ))}
-        <button
-          className={styles.pagination_prev_next + " flex_space_between"}
-          onClick={nextPageHandler}
-        >
-          Next
-          <RightArrow />
-        </button>
-      </div>
-    )
-  );
+      ))}
+      <button
+        onClick={nextPageHandler}
+        className={styles.pagination_prev_next + " flex_space_between"}
+      >
+        Next
+        <RightArrow />
+      </button>
+    </div>
+  ) : null;
 };
 
 export default Pagination;

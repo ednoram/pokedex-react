@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import PokemonInfoGrid from "./PokemonInfoGrid";
-import PokemonStatsGrid from "./PokemonStatsGrid";
-
 import styles from "./pokemon_table.module.scss";
+import PokemonStatsGrid from "./PokemonStatsGrid";
 
 const PokemonTable = ({ type, pokemonData }) => {
   const Grid = () => {

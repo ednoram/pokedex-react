@@ -22,7 +22,6 @@ const PokemonCard = ({ pokemon, className }) => {
   return Number(pokemonId) && pokemonData ? (
     <div className={[styles.pokemon_card, className].join(" ")}>
       <p className={styles.pokemon_id}>{"#" + pokemonId.slice(-3)}</p>
-
       <Link
         className={styles.pokemon_link}
         to={`/${pokemon.name.toLowerCase()}`}

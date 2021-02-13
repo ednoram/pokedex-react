@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import { nanoid } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
+import styles from "./pokemon_evolutions.module.scss";
+
 import { PokemonCard } from "..";
 
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
-
-import styles from "./pokemon_evolutions.module.scss";
 
 const PokemonEvolution = ({ pokemonData }) => {
   const [evolutionPokemons, setEvolutionPokemons] = useState([]);
@@ -44,7 +44,7 @@ const PokemonEvolution = ({ pokemonData }) => {
           if (!pokemon?.url) return;
 
           setEvolutionPokemons((pokemons) =>
-            [...pokemons, pokemon].filter((item) => !pokemons.includes(pokemon))
+            [...pokemons, pokemon].filter(() => !pokemons.includes(pokemon))
           );
         });
       });
