@@ -51,6 +51,7 @@ const Pagination = () => {
     <div className={styles.pagination}>
       <button
         onClick={prevPageHandler}
+        disabled={currentPage === 1}
         className={styles.pagination_prev_next + " flex_space_between"}
       >
         <RightArrow className="flip" />
@@ -71,6 +72,7 @@ const Pagination = () => {
       <button
         onClick={nextPageHandler}
         className={styles.pagination_prev_next + " flex_space_between"}
+        disabled={currentPage === allButtonNames[allButtonNames.length - 1]}
       >
         Next
         <RightArrow />
