@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./cards_per_page.module.scss";
 
-import { setStep } from "../../actions/paginationActions";
+import { setStep } from "../../actions";
+import { selectPaginationStep } from "../../selectors";
 
 const DropdownItem = ({ number }) => {
-  const paginationStep = useSelector((state) => state.pagination.step);
+  const paginationStep = useSelector(selectPaginationStep);
+
   const dispatch = useDispatch();
 
   const num = Number(number);

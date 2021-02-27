@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import styles from "./home_container.module.scss";
 
+import { setShowAutoComplete } from "../../actions";
 import HelmetLayout from "../../layouts/HelmetLayout";
-import { setShowAutoComplete } from "../../actions/searchActions";
 import { Searchbox, PokemonsList, CardsPerPage } from "../../components";
 
 const HomePageContainer = () => {

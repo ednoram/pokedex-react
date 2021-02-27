@@ -1,25 +1,18 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import AutoComplete from "./AutoComplete";
 import styles from "./searchbox.module.scss";
 
-import {
-  setSearchValue,
-  setShowAutoComplete,
-} from "../../actions/searchActions";
 import { useOutsideClick } from "../../hooks";
 import { ReactComponent as XIcon } from "../../assets/x_icon.svg";
+import { setSearchValue, setShowAutoComplete } from "../../actions";
+import { selectSearchValue, selectShowAutoComplete } from "../../selectors";
 import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
 
 const Searchbox = () => {
-  const { searchValue, showAutoComplete } = useSelector(
-    (state) => ({
-      searchValue: state.search.value,
-      showAutoComplete: state.search.showAutoComplete,
-    }),
-    shallowEqual
-  );
+  const searchValue = useSelector(selectSearchValue);
+  const showAutoComplete = useSelector(selectShowAutoComplete);
 
   const dispatch = useDispatch();
 
@@ -54,7 +47,7 @@ const Searchbox = () => {
 
   useEffect(() => {
     inputRef.current.value = searchValue;
-    !searchValue.trim()
+    !searchValue
       ? dispatch(setShowAutoComplete(false))
       : dispatch(setShowAutoComplete(true));
   }, [searchValue, dispatch]);

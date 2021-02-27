@@ -1,6 +1,6 @@
-export const nextPage = (items_count) => ({
+export const nextPage = (itemsCount) => ({
   type: "NEXT_PAGE",
-  items_count: items_count,
+  itemsCount: itemsCount,
 });
 
 export const prevPage = () => ({

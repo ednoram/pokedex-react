@@ -1,31 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./autocomplete.module.scss";
 
-import {
-  setSearchValue,
-  setShowAutoComplete,
-} from "../../../actions/searchActions";
+import { setSearchValue, setShowAutoComplete } from "../../../actions";
+import { selectSearchValue, selectAllPokemons } from "../../../selectors";
 
 const AutoComplete = ({ inputRef }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const { pokemons, searchValue } = useSelector(
-    (state) => ({
-      pokemons: state.pokemons,
-      searchValue: state.search.value,
-    }),
-    shallowEqual
-  );
+  const pokemons = useSelector(selectAllPokemons);
+  const searchValue = useSelector(selectSearchValue);
 
   const dispatch = useDispatch();
 
   const suggestions = pokemons
     .filter((pokemon) =>
-      pokemon.name.toLowerCase().startsWith(searchValue.trim().toLowerCase())
+      pokemon.name.toLowerCase().startsWith(searchValue.toLowerCase())
     )
     .slice(0, 5)
     .map(

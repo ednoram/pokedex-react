@@ -1,28 +1,30 @@
 import React from "react";
 import { nanoid } from "nanoid";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./pagination.module.scss";
 
+import {
+  selectAllPokemons,
+  selectSearchValue,
+  selectPaginationStep,
+  selectPaginationStart,
+} from "../../selectors";
+import { nextPage, prevPage, setPage } from "../../actions";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
-import { nextPage, prevPage, setPage } from "../../actions/paginationActions";
 
 const Pagination = () => {
-  const { pokemons, pagination, searchValue } = useSelector(
-    (state) => ({
-      pokemons: state.pokemons,
-      pagination: state.pagination,
-      searchValue: state.search.value,
-    }),
-    shallowEqual
-  );
+  const pokemons = useSelector(selectAllPokemons);
+  const searchValue = useSelector(selectSearchValue);
+  const paginationStep = useSelector(selectPaginationStep);
+  const paginationStart = useSelector(selectPaginationStart);
 
   const dispatch = useDispatch();
 
-  const currentPage = Math.floor(pagination.start / pagination.step) + 1;
+  const currentPage = Math.floor(paginationStart / paginationStep) + 1;
 
   const allButtonNames = pokemons
-    .slice(0, Math.ceil(pokemons.length / pagination.step))
+    .slice(0, Math.ceil(pokemons.length / paginationStep))
     .map((pokemon, index) => index + 1);
 
   const buttonNames = allButtonNames.slice(-5).includes(currentPage)
@@ -47,7 +49,7 @@ const Pagination = () => {
     window.scroll(0, 0);
   };
 
-  return !searchValue || pokemons.length <= pagination.step ? (
+  return !searchValue || pokemons.length <= paginationStep ? (
     <div className={styles.pagination}>
       <button
         onClick={prevPageHandler}

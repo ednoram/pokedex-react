@@ -3,7 +3,7 @@ export const setSearchValue = (text) => ({
   text: text,
 });
 
-export const setShowAutoComplete = (bool) => ({
+export const setShowAutoComplete = (showAutoComplete) => ({
   type: "SET_SHOW_AUTOCOMPLETE",
-  bool: bool,
+  showAutoComplete: showAutoComplete,
 });

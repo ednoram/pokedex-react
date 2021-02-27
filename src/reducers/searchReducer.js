@@ -6,15 +6,15 @@ const INITIAL_STATE = {
   showAutoComplete: false,
 };
 
-const searchReducer = produce((draft, action) => {
-  switch (action.type) {
+const searchReducer = produce((draft, { type, text, showAutoComplete }) => {
+  switch (type) {
     case "CHANGE_VALUE":
       if (!draft.typing) {
-        draft.value = action.text;
+        draft.value = text;
       }
       break;
     case "SET_SHOW_AUTOCOMPLETE":
-      draft.showAutoComplete = action.bool;
+      draft.showAutoComplete = showAutoComplete;
       break;
     default:
       return;

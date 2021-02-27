@@ -8,6 +8,7 @@ import styles from "./pokemon_page_container.module.scss";
 
 import { PageNotFoundContainer } from "..";
 
+import { selectAllPokemons } from "../../selectors";
 import HelmetLayout from "../../layouts/HelmetLayout";
 import { PokemonTable, PokemonEvolutions } from "../../components";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
@@ -18,16 +19,15 @@ const PokemonPageContainer = () => {
   const [pokemonData, setPokemonData] = useState({});
   const [fetchFinished, setFetchFinished] = useState(false);
 
-  const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector(selectAllPokemons);
 
   const pokemon = pokemons.find(
     (pokemon) => pokemon.name === pathname.slice(1)
   );
 
   const pageTitle =
-    pokemon?.name.charAt(0).toUpperCase() +
-    pokemon?.name.slice(1) +
-    " | Pokédex";
+    pokemon?.name &&
+    pokemon.name[0].toUpperCase() + pokemon.name.slice(1) + " | Pokédex";
 
   const PrevBtn = () => {
     const prevPokemonName = pokemons[pokemonData?.id - 2]?.name;

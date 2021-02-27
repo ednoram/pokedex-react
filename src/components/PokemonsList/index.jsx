@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./pokemons_list.module.scss";
 
 import { PokemonCard } from "..";
 
+import {
+  selectAllPokemons,
+  selectSearchValue,
+  selectPaginationStep,
+  selectPaginationStart,
+} from "../../selectors";
+import { setStep } from "../../actions";
 import { useWindowSize } from "../../hooks";
 import { Pagination } from "../../components";
-import { setStep } from "../../actions/paginationActions";
 
 const PokemonsList = () => {
   const [, setTimer] = useState(null);
   const [limit, setLimit] = useState(Infinity);
   const [loading, setLoading] = useState(false);
 
-  const { pokemons, pagination, searchValue } = useSelector(
-    (state) => ({
-      pokemons: state.pokemons,
-      pagination: state.pagination,
-      searchValue: state.search.value,
-    }),
-    shallowEqual
-  );
+  const pokemons = useSelector(selectAllPokemons);
+  const searchValue = useSelector(selectSearchValue);
+  const paginationStep = useSelector(selectPaginationStep);
+  const paginationStart = useSelector(selectPaginationStart);
 
   const dispatch = useDispatch();
   const windowSize = useWindowSize();
 
-  const filteredPokemons = searchValue.trim()
+  const filteredPokemons = searchValue
     ? pokemons.filter((pokemon) =>
-        pokemon.name.startsWith(searchValue.trim().toLowerCase())
+        pokemon.name.startsWith(searchValue.toLowerCase())
       )
-    : pokemons.slice(pagination.start, pagination.start + pagination.step);
+    : pokemons.slice(paginationStart, paginationStart + paginationStep);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +56,7 @@ const PokemonsList = () => {
               setLimit((limit) => limit + (windowSize.width <= 768 ? 20 : 30));
             } else if (windowSize.width <= 768) {
               setLimit(Infinity);
-              dispatch(setStep(pagination.step + 20));
+              dispatch(setStep(paginationStep + 20));
             }
 
             setLoading(false);

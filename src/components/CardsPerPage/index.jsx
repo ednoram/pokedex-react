@@ -26,7 +26,7 @@ const CardsPerPage = () => {
     setIsOpen(!isOpen);
   };
 
-  return !searchValue.trim() ? (
+  return !searchValue ? (
     <div className={styles.items_per_page}>
       <p>Showing</p>
       <div

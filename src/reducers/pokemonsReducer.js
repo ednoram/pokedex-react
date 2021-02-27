@@ -1,9 +1,9 @@
-const pokemonsReducer = (state = [], action) => {
-  switch (action.type) {
+const pokemonsReducer = (state = [], { type, pokemons, error }) => {
+  switch (type) {
     case "FETCH_SUCCEED":
-      return action.pokemons;
+      return pokemons;
     case "FETCH_FAIL":
-      throw new Error(action.error);
+      throw new Error(error);
     default:
       return state;
   }

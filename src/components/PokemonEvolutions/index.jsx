@@ -8,12 +8,13 @@ import styles from "./pokemon_evolutions.module.scss";
 
 import { PokemonCard } from "..";
 
+import { selectAllPokemons } from "../../selectors";
 import { ReactComponent as RightArrow } from "../../assets/right_arrow.svg";
 
 const PokemonEvolution = ({ pokemonData }) => {
   const [evolutionPokemons, setEvolutionPokemons] = useState([]);
 
-  const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector(selectAllPokemons);
 
   const evolutions = evolutionPokemons.map((pokemon, index) => [
     <li className="flex_center" key={nanoid()}>
