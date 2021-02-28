@@ -33,7 +33,11 @@
     }
 
     .pokemon_card {
-      width: 200px;
+      width: 214px;
+
+      @media (max-width: 880px) {
+        width: 200px;
+      }
     }
 
     .arrow {

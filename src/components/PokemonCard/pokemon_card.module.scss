@@ -62,6 +62,8 @@
 }
 
 .pokemon_card:hover {
-  animation-name: bounce;
-  animation-duration: 0.3s;
+  @media (min-width: 769px) {
+    animation-name: bounce;
+    animation-duration: 0.3s;
+  }
 }
