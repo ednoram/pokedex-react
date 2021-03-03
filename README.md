@@ -13,7 +13,7 @@ This is a React app that shows pokemons from [pokeapi.co](https://www.pokeapi.co
 
 ## Demo
 
-> https://pokedex.ednoram.vercel.app/
+> https://pokedex-react.ednoram.vercel.app/
 
 ## Screenshot
 
@@ -32,7 +32,7 @@ This is a React app that shows pokemons from [pokeapi.co](https://www.pokeapi.co
 > Clone repository.
 
 ```sh
-git clone https://github.com/ednoram/pokedex.git
+git clone https://github.com/ednoram/pokedex-react.git
 ```
 
 > Run the following commands.
