@@ -41,7 +41,10 @@ const PokemonEvolution = ({ pokemonData }) => {
         ];
 
         names.forEach((name) => {
-          const pokemon = pokemons.find((pokemon) => pokemon.name === name);
+          const pokemon = pokemons.find((pokemon) =>
+            pokemon.name.includes(name)
+          );
+
           if (!pokemon?.url) return;
 
           setEvolutionPokemons((pokemons) =>
